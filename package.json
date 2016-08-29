@@ -1,7 +1,7 @@
 {
   "name": "quilk",
-  "version": "0.1.3",
-  "description": "quilk. A lightweight, modular based watcher and builder. Watches files with chokidar and builds with the bare bones tools resulting in a lightning fast compiler. Add additional commands specifically for releases, such as minification and uglification etc.",
+  "version": "0.1.5",
+  "description": "quilk.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,10 +14,11 @@
     "type": "git",
     "url": "https://github.com/johnc1984/quilk"
   },
-  "main": "lib",
-  "bin": {
-    "quilk": "bin/quilk"
+  "bugs": {
+    "url": "https://github.com/johnc1984/quilk/issues"
   },
+  "main": "lib/quilk.js",
+  "bin": "./bin/quilk.js",
   "files": [
     "bin",
     "lib"
