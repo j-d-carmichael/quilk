@@ -17,24 +17,19 @@ quilk modules are light and fast, they work rapid fast on a std HDD and blink of
 
 ## How it works
 1.  quilk comes installed with 7 modules ready to go:
-
--- browserify_bundle: This will build a bundle.js from other js modules. A must for when building nodeJs web applications, use select server side code at the client and the client code at the server, less code to write. 
-
--- js_find: This will create a single js file based on js files it finds within an array of paths you provide. You may also state which files must be included at the top of the generated file.
-
--- js_fixed: A simplified version of js_find, provide a static list of files and the module will simply concat them all together in a single js file.
-
--- less_std: (work in progress) A standard module to build css files. Provide the entry point and output point and the module will handle the rest.
-
--- sass_std: A standard module to build css from sass files. The same as the less_std, provide the in and out and the module handles the rest. It being sass of course results in a much much faster time to compile.
-
--- sass_find: (work in progress) Slightly different from the sass_find, this module will find sass files in paths you provide and create a single sass file, ever so slightly slower than the sass_std, but which ever floats your boat :)
+    1. **browserify_bundle**: This will build a bundle.js from other js modules. A must for when building nodeJs web applications, use select server side code at the client and the client code at the server, less code to write.
+    2. **js_find**: This will create a single js file based on js files it finds within an array of paths you provide. You may also state which files must be included at the top of the generated file.
+    3. **js_fixed**: A simplified version of js_find, provide a static list of files and the module will simply concat them all together in a single js file.
+    4. **less_std**: A standard module to build css files. Provide the entry point and output point and the module will handle the rest.
+    5. **sass_std**: A standard module to build css from sass files. The same as the less_std, provide the in and out and the module handles the rest. It being sass of course results in a much much faster time to compile.
+    6. **sass_find**: Slightly different from the sass_find, this module will find sass files in paths you provide and create a single sass file, ever so slightly slower than the sass_std, but which ever floats your boat :)
+    7. **css_fixed**: A simple concat module, supply it paths from the root of your project and output will be one big css file. Perfect for including css from 3rd parties eg via bower.
 
 2.  Custom modules: Coming soon. Should you require a module that is not part of the std pack, simply build your own, with what ever tech you need. The idea with quilk is not to provide a one stop shop for every single possible thing that every single developer would ever need, but just to provide a simple module runner that is flexible and fast. As a developer I have spent many moons waiting for npm install to download the earth and more, and that is just for the dev tools. 
 
 3. Each module requires its own set config data, and this data is set in the `quilk.json` file. See the example below
 
-### Example quilk.json file
+## Example kitchen sink quilk.json file. Note this exmaple uses every out of the box module
 ```
 {
   "modules" : [
@@ -94,7 +89,24 @@ quilk modules are light and fast, they work rapid fast on a std HDD and blink of
       ],
       "find_in_path": "/public/app/",
       "target": "/public/css/index.css"
-    }
+    },
+    {
+      "name"   : "Less compiler",
+      "module" : "less_std",
+      "resourcePaths" : ["/resources/assets/less/"],
+      "input_path"  : "/resources/assets/less/xenon.less",
+      "target" : "/public/css/app.css"
+    },
+    {
+      "name" : "Vendor CSS Files",
+      "module": "css_fixed",
+      "files": [
+        "/public/bower_components/bootstrap/dist/css/bootstrap.css",
+        "/public/bower_components/ngDialog/css/ngDialog.css",
+        "/public/bower_components/ngDialog/css/ngDialog-theme-plain.css"
+      ],
+      "target": "/public/css/vendor.css"
+    },
     {
       "name": "Rsync it",
       "module": "rsync",
@@ -141,4 +153,22 @@ quilk modules are light and fast, they work rapid fast on a std HDD and blink of
   }
 }
 ```
+`dont_watch`
+Note the `dont_watch` this is telling the watcher (chokidar) to not build when it spots a changes in these paths. IE after a quilk module has built a file, chokidar wont trigger the module to run again... ie avoiding that infinite loop.
 
+`developers`
+This can be as general or as granular as your like. As you can see from the example, this also contains developer specifics for the rsync module.
+
+
+## Example browserifyMain.js file which requires other modules
+```
+"use strict";
+module.exports = {
+	formValidator	: require('./formValidator'),
+	validators		: require( './validators')
+};
+```
+The modules using the above kitchen sink json would be accessed in you application like this (the `browserify_bundle_name` you use is what you call in your application):
+```
+var passfail = bfyModules.validators.parse( 'is_max_length:50', 'some input string' );
+```

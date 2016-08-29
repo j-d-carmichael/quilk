@@ -1,6 +1,6 @@
 {
   "name": "quilk",
-  "version": "0.1.01",
+  "version": "0.1.2",
   "description": "quilk. A lightweight, modular based watcher and builder. Watches files with chokidar and builds with the bare bones tools resulting in a lightning fast compiler. Add additional commands specifically for releases, such as minification and uglification etc.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
