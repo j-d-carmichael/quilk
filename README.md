@@ -82,6 +82,20 @@ quilk modules are light and fast, they work rapid fast on a std HDD and blink of
       "target": "/public/css/all.css"
     },
     {
+      "name": "App CSS (SASS find)",
+      "module": "sass_find",
+      "outputStyle": "expanded",
+      "sourceComments": true,
+      "include_first": [
+        "/public/app/core/scss/global.scss"
+      ],
+      "ignorePaths" : [
+        "core/scss"
+      ],
+      "find_in_path": "/public/app/",
+      "target": "/public/css/index.css"
+    }
+    {
       "name": "Rsync it",
       "module": "rsync",
       "ignore": {
