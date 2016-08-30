@@ -56,13 +56,13 @@
   },
 
   "developers" : {
-    "john" : {
+    "default" : {
       "platform" : "windows",
       "notifier" : {
         "on"   : true,
         "style": "WindowsBalloon",
-        "time" : 2500,
-        "sound": false
+        "time" : 5000,
+        "sound": true
       },
       "rsync" : {
         "localPath"  : "/cygdrive/c/projects/project-x/",
