@@ -1,0 +1,74 @@
+{
+  "modules" : [
+     {
+      "name"   : "Lib js",
+      "module" : "js_fixed",
+      "files"  : [
+        "/resources/assets/bower_components/jquery/dist/jquery.min.js",
+        "/resources/assets/bower_components/async/dist/async.js"
+      ],
+      "target" : "/public/build/js/lib.js"
+    },
+    {
+      "name"   : "App js",
+      "module" : "js_find",
+      "include_first": [
+        "/resources/assets/js/app.js"
+      ],
+      "find_in_paths": [
+        "/resources/assets/js"
+      ],
+      "target" : "/public/build/js/main.js"
+    },
+    {
+      "name": "App CSS (SASS Std)",
+      "module": "sass_std",
+      "outputStyle": "expanded",
+      "sourceComments": true,
+      "input_path": "/resources/assets/sass/app.scss",
+      "target": "/public/css/all.css"
+    },
+    {
+      "name": "Rsync it",
+      "module": "rsync",
+      "ignore": {
+        "windows" : [],
+        "mac"     : [],
+        "global"  : [
+          ".git*",
+          ".idea*",
+          "storage",
+          "node_modules/*",
+          "tests/*",
+          "vendor/*"
+        ]
+      }
+    }
+  ],
+
+  "dont_watch": [
+    "public/build/"
+  ],
+
+  "release_commands": {
+    "live": [],
+    "dev" :[]
+  },
+
+  "developers" : {
+    "john" : {
+      "platform" : "windows",
+      "notifier" : {
+        "on"   : true,
+        "style": "WindowsBalloon",
+        "time" : 2500,
+        "sound": false
+      },
+      "rsync" : {
+        "localPath"  : "/cygdrive/c/projects/project-x/",
+        "remote"     : "www-data@1.2.3.4",
+        "serverPath" : "/var/vhosts/project-x/"
+      }
+    }
+  }
+}
