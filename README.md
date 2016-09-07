@@ -23,7 +23,7 @@ Create your base `quilk.json` file by running from the root of your project:
  ```
 For help run
  ```
- quilk init help
+ quilk help
  ```
 
 ## Example single run 
