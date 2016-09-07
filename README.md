@@ -8,7 +8,7 @@ This is still a work in progress, want to help? Give me a shout :)
 *  [Example run then watch](#example-run-then-watch)
 *  [Example run for live](#example-run-for-live)
 *  [How it works](#how-it-works)
-*  [Example kitchen sink quilk.json](#example-kitchen-sink-quilk.json)
+*  [Example kitchen sink quilk.json](#example-kitchen-sink-quilkjson)
 *  [Example browserifyMain.js file](#example-browserifymain.js-file-which-requires-other-modules)
 *  [Which notifier to use](#which-notifier-to-use)
 
