@@ -1,6 +1,6 @@
 {
   "name": "quilk",
-  "version": "0.5.7",
+  "version": "0.5.8",
   "description": "quilk.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
