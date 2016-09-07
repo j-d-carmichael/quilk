@@ -175,6 +175,7 @@ The base modules quilk comes with handle the majority of tasks required to compi
       "name": "Rsync it",
       "module": "rsync",
       "ignore": {
+        "linux" :   [],
         "windows" : [],
         "mac"     : [],
         "global"  : [
