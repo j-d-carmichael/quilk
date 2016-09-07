@@ -1,6 +1,6 @@
 {
   "name": "quilk",
-  "version": "0.3.4",
+  "version": "0.4.1",
   "description": "quilk.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,9 +25,8 @@
   ],
   "homepage": "https://github.com/johnc1984/quilk",
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=0.12.0"
   },
-
   "dependencies": {
     "browserify"              : "13.1.0",
     "concat-files"            : "0.1.0",
@@ -37,6 +36,7 @@
     "fs.extra"                : "1.3.2",
     "javascript-natural-sort" : "0.7.1",
     "jdc-node-cliarg-reader"  : "1.0.0",
+    "jsonfile"                : "2.3.1",
     "less"                    : "2.7.1",
     "lodash"                  : "4.15.0",
     "node-notifier"           : "4.6.1",

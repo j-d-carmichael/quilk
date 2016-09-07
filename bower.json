@@ -1,0 +1,29 @@
+{
+  "name": "quilk",
+  "description": "quilk.",
+  "main": "lib/quilk.js",
+  "authors": [
+    "John Carmichael"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "builder",
+    "watcher",
+    "fast",
+    "quilk"
+  ],
+
+  "dependencies": {
+    "lightgallery"  : "latest",
+    "slick-carousel" : "latest"
+  },
+
+  "homepage": "https://github.com/johnc1984/quilk",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
