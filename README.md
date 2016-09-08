@@ -1,6 +1,3 @@
-# note
-This is still a work in progress, want to help? Give me a shout :)
-
 # Index
 *  [Intro](#intro)
 *  [Getting started](#getting-started)
@@ -15,6 +12,12 @@ This is still a work in progress, want to help? Give me a shout :)
 
 # Intro
 quilk. A builder and watcher with speed. No complex build configuration file required, just a simple JSON.
+
+Why? Speed. We wanted a cleaner and faster way to do the routine tasks we frequently do at the start of each project. A way that is very opinionated while offering the freedom to those who want it. With quilk, a quick configuration of a std json file will get you building the app or site you want to build without first messing around with any complex gulp or grunt file. We wanted a simple package that housed all the essentials for SASS, LESS and JS. So now you don't need to include 10 dev dependencies, you only require a simple quilk.json file and have quilk globally installed.
+
+Now, if you are a small agency you can get all your projects built in the same way with their build files (the quilk.json) all looking the same. Spending 8 months in the agency world I was left scratching my head as to why this didn't already exist. Instead every time a new project was started a different developer would create a new build file in a different way to another.. 10 projects later and there are 10 different styles of biuld file all pretty much doing the same thing, maddening. 
+
+With quilk all the essentials are there out of the box. Want more functionality, write a simple node js module and you're away.. don't know how to write a simple node js module, no bother.. just type `quilk init example_module` and it will init your quilk.json file and create a sample custom module for you to play around with. 
 
 ## Getting started
 First up, I don't enjoy typing dashes before cli args, if you do fine they will still work but the quilk cli command also work without, eg the following all map to the same thing.. help:
