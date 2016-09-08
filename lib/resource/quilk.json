@@ -1,5 +1,10 @@
 {
   "modules" : [
+    {
+      "name": "Just for fun",
+      "module": "just_for_fun",
+      "print_this": "Place something here to see it appear in the console"
+    }
   ],
 
   "dont_watch": [
@@ -16,7 +21,7 @@
     "default" : {
       "platform" : "windows",
       "notifier" : {
-        "on"   : true,
+        "on"   : false,
         "style": "WindowsBalloon",
         "time" : 5000,
         "sound": true

@@ -1,7 +1,11 @@
 #quilk
 
-<span style="font-size:small;">Guys and gals, although this is just a presonal project of mine.. if you fancy helping out do give me a shout :) It is pretty much stable and I don't foresee the architecture changing too drastically now, but I have not tested this cross platform too much yet, works on windows10 and linux mint a.t.m., should work on macs.</span>
+<span style="font-size:small;font-weight:500;">This is just currently a little project of mine.. if you fancy helping out do give me a shout :) It is pretty much stable and I don't foresee the architecture changing too drastically now, but I have not tested this cross platform too much yet, tested on windows10 and Linux Mint 18 a.t.m., should work on macs but yet to try.</span>
 ---
+
+### Coming next
+1.  Integration of modules into the release commands, example use case clearly being the node_minify for release.
+2.  Conversion of the quilk module keys to lowercase and underscored for normalisation over all modules, quilk packaged and project custom.
 
 ### Index
 *  [Intro](#intro)
@@ -20,30 +24,19 @@ quilk. A builder and watcher with speed. No complex build configuration file req
 
 Why? Speed. We wanted a cleaner and faster way to do the routine tasks we frequently do at the start of each project. A way that is very opinionated while offering the freedom to those who want it. With quilk, a quick configuration of a std json file will get you building the app or site you want to build without first messing around with any complex gulp or grunt file. We wanted a simple package that housed all the essentials for SASS, LESS and JS. So now you don't need to include 10 dev dependencies, you only require a simple quilk.json file and have quilk globally installed.
 
-Now, if you are a small agency you can get all your projects built in the same way with their build files (the quilk.json) all looking the same. Spending 8 months in the agency world I was left scratching my head as to why this didn't already exist. Instead every time a new project was started a different developer would create a new build file in a different way to another.. 10 projects later and there are 10 different styles of biuld file all pretty much doing the same thing, maddening. 
+Using quilk either for personal use or as a company or as an agency, the build file will always look and feel the same. To build the std sass and js files there is only one way to go, configure a simple JSON. If the output works then the JSON is configured correctly, if it does then it is not. No room for funky code to make new devs on the project scratch their head and wonder what the flip is going on. Spending 8 months at an agency I was left scratching my head as to why this didn't already exist. Instead every time a new project was started a different developer would create a new build file in a different way to another.. 10 projects later and there are 10 different styles of build file all pretty much doing the same thing, but some better or worse than others.. maddening.
 
 With quilk all the essentials are there out of the box. Want more functionality, write a simple node js module and you're away.. don't know how to write a simple node js module, no bother.. just type `quilk init example_module` and it will init your quilk.json file and create a sample custom module for you to play around with. 
 
 ## Getting started
-First up, I don't enjoy typing dashes before cli args, if you do fine they will still work but the quilk cli command also work without, eg the following all map to the same thing.. help:
-```
-quilk help
-```
-```
-quilk -help
-```
-```
-quilk --help
-```
+First up, I don't enjoy typing dashes before cli args, if you do that is fine they will still work but, the quilk cli command also work without, eg the following all map to the same thing.. help: `quilk help` `quilk -help` `quilk --help`
 
 Create your base `quilk.json` file by running from the root of your project:
  ```
  quilk init
  ```
-For help run
- ```
- quilk help
- ```
+This will bootstrap the current directory with a quilk.json file configured to run the `just_for_fun` module. After the init has finished you can take quilk for a test drive  by typing `quilk`, this will take the developer in the quilk.json named default to run the modules the quilk.json is configured to run, which in this case is just the fun run module. If you add a new developer this is used by typing `quilk d=<dev name>`
+ 
 For help on a specific module, find the module name (see lower down in the how it works section)
  ```
  quilk help module=<module>
