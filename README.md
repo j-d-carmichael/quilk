@@ -1,4 +1,9 @@
-# Index
+#quilk
+
+<span style="font-size:small;">Guys and gals, although this is just a presonal project of mine.. if you fancy helping out do give me a shout :) It is pretty much stable and I don't foresee the architecture changing too drastically now, but I have not tested this cross platform too much yet, works on windows10 and linux mint a.t.m., should work on macs.</span>
+---
+
+### Index
 *  [Intro](#intro)
 *  [Getting started](#getting-started)
 *  [Example single run](#example-single-run)
