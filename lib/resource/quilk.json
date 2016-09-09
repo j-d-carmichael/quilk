@@ -3,18 +3,24 @@
     {
       "name": "Just for fun",
       "module": "just_for_fun",
-      "print_this": "Place something here to see it appear in the console"
+      "print_this": "This should be run by the the quilk runner"
     }
   ],
 
   "dont_watch": [
   ],
 
-  "release_commands": {
-    "live": [
-    ],
-    "dev":[
-    ]
+  "release_commands_or_modules": {
+    "live":{
+      "pre": [
+        "echo 'PRE-LIVE-RELEASE command...'"
+      ],
+      "post": [{
+        "name": "Just for fun",
+        "module": "just_for_fun",
+        "print_this": "This is the post std build command, note this is a quilk module"
+      }]
+    }
   },
 
   "developers" : {

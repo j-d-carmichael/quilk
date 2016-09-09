@@ -4,8 +4,7 @@
 ---
 
 ### Coming next
-1.  Integration of modules into the release commands, example use case clearly being the node_minify for release.
-2.  Conversion of the quilk module keys to lowercase and underscored for normalisation over all modules, quilk packaged and project custom.
+1.  Conversion of the quilk module keys to lowercase and underscored for normalisation over all modules, quilk packaged and project custom.
 
 ### Index
 *  [Intro](#intro)
@@ -14,6 +13,7 @@
 *  [Example run then watch](#example-run-then-watch)
 *  [Example run for live](#example-run-for-live)
 *  [How it works](#how-it-works)
+*  [Using quilk for release](#using-quilk-for-release)
 *  [Example kitchen sink quilk.json](#example-kitchen-sink-quilkjson)
 *  [Example browserifyMain.js file](#example-browserifymainjs-file-which-requires-other-modules)
 *  [Which notifier to use](#which-notifier-to-use)
@@ -92,6 +92,13 @@ The base modules quilk comes with handle the majority of tasks required to compi
 4.  **Dont watch** When using the watch option ensure that you instruct which file to not watch, `dont_watch`. 
     The `dont_watch` option is quilk.json is passed to chokidar as directories and exact files to not trigger on. EG should you build a css file from sass you don't want to trigger chokidar to run all the modules again when it spots a change in the said css file ie ending up in an infinite loop.
 5.  **Developers block** This can be as general or as granular as your like. As you can see from the example, this also contains developer specifics for the rsync module.
+
+## Using quilk for release
+The release object is an object where each key is mapped to the `quilk release=<name>`. Each release object is comprised of a pre and post array. Each array is either a module object or a string cli command.
+
+The pre array will get called before everything. Then the std quilk modules run. Then the post array will run.
+
+Both the pre and the post are optional. Please run `quilk init` and take a look at the init for more info.
 
 ## Example kitchen sink quilk.json 
 (Note this example uses every out of the box module)
@@ -196,13 +203,17 @@ The base modules quilk comes with handle the majority of tasks required to compi
     "public/css/all.css"
   ],
 
-  "release_commands": {
-    "live": [
-      "bower install -s"
-    ],
-    "dev":[
-      "bower install -s"
-    ]
+  "release_commands_or_modules": {
+    "live":{
+      "pre": [
+        "echo 'PRE-LIVE-RELEASE command...'"
+      ],
+      "post": [{
+        "name": "Just for fun",
+        "module": "just_for_fun",
+        "print_this": "This is the post std build command, note this is a quilk module"
+      }]
+    }
   },
 
   "developers" : {
