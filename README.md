@@ -261,8 +261,11 @@ With quilk you can turn on or off the notifications on a dev by dev basis, just 
 
 There are also a few alternative desktop popups available and vary from OS to OS. As Windows potentially has two types (depending on the version XP, 7 or 10) this block in the json is granular down to the type of popup. And below is the list:
 1.  **WindowsBalloon**: Typically for windows 7,8,10.
+
 1.  **WindowsToaster**: Typically for windows 7,8 (10 seems to default to the balloon).
+
 1.  **Growl**: Typically for mac users.
+
 1.  **NotifySend**: Typically for Linux.
 
 The notifier uses this module: https://www.npmjs.com/package/node-notifier#all-notification-options-with-their-defaults
