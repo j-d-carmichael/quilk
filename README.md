@@ -31,7 +31,7 @@ Quilk is not installed as a dependency in a package.json file, but installed glo
 `npm install -g quilk`
 
 ## Getting started
-First up, I don't enjoy typing dashes before cli args, if you do that is fine they will still work but, the quilk cli command also work without, eg the following all map to the same thing.. help: `quilk help` `quilk -help` `quilk --help`
+First up, I don't enjoy typing dashes before cli args, if you do that is fine they will still work but, the quilk cli commands also work without, eg the following all map to the same thing.. help: `quilk help` `quilk -help` `quilk --help`
 
 Create your base `quilk.json` file by running from the root of your project (or copying from another project):
 ```
@@ -49,7 +49,7 @@ With your quilk.json configured you can kick off a single run with:
 `quilk d=john`
 
 ## Example run then watch
-With your quilk.json configured running quilk with the watch argument run the modules then watch the files and rerun on a change (either a new file or change or removal):
+Adding `watch`into the mix will instruct quilk to watch your files and re-run the modules in the modules array again after a change (either a new file or change or removal). The watcher is chokidar:
 `quilk d=john watch`
 
 ## Example run for live
