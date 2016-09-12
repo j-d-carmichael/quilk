@@ -1,13 +1,13 @@
 {
   "name": "quilk",
-  "version": "0.7.2",
-  "description": "quilk.",
+  "version": "0.7.3",
+  "description": "SASS LESS JS Concat Browserify Node-Minify and Rsync with one module, no dev dependencies required. Works well on HDD and SSDs.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "John Carmichael",
   "keywords": [
-    "builder", "watcher", "fast", "quilk", "LESS", "sass", "scss", "rsync", "browserify", "gulp alternative", "json"
+    "builder", "watcher", "fast", "quilk", "LESS", "sass", "scss", "rsync", "browserify", "json"
   ],
   "license": "MIT",
   "repository": {
