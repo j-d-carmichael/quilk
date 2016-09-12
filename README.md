@@ -260,6 +260,7 @@ The desktop notifier is defined developer by developer. Most teams today do not 
 With quilk you can turn on or off the notifications on a dev by dev basis, just set on to true or false.
 
 There are also a few alternative desktop popups available and vary from OS to OS. As Windows potentially has two types (depending on the version XP, 7 or 10) this block in the json is granular down to the type of popup. And below is the list:
+
 1.  **WindowsBalloon**: Typically for windows 7,8,10.
 
 1.  **WindowsToaster**: Typically for windows 7,8 (10 seems to default to the balloon).
