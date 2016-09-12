@@ -1,13 +1,11 @@
 #quilk
+A builder and watcher with speed. No complex build configuration file required, just a simple JSON.
 
-<span style="font-size:small;font-weight:500;">This is just currently a little project of mine.. if you fancy helping out do give me a shout :) It is pretty much stable and I don't foresee the architecture changing too drastically now, but I have not tested this cross platform too much yet, tested on windows10 and Linux Mint 18 a.t.m., should work on macs but yet to try.</span>
 ---
-
-### Coming next
-1.  Conversion of the quilk module keys to lowercase and underscored for normalisation over all modules, quilk packaged and project custom.
 
 ### Index
 *  [Intro](#intro)
+*  [Install](#install)
 *  [Getting started](#getting-started)
 *  [Example single run](#example-single-run)
 *  [Example run then watch](#example-run-then-watch)
@@ -19,36 +17,43 @@
 *  [Which notifier to use](#which-notifier-to-use)
 
 
-# Intro
-quilk. A builder and watcher with speed. No complex build configuration file required, just a simple JSON.
+## Intro
+Why did I go ahead and build yet another module runner designed to compile SASS and JS files and rsync... in short, speed. I needed a super lightweight solution that worked fast on both low spec machines with a HDD, as well as the high spec with SSD machines. The current tools available were killing the build speed on an i5 HDD machine, especially when throwing watchers plus an IDE into the mix... a lot of time sitting and waiting.
 
-Why? Speed. We wanted a cleaner and faster way to do the routine tasks we frequently do at the start of each project. A way that is very opinionated while offering the freedom to those who want it. With quilk, a quick configuration of a std json file will get you building the app or site you want to build without first messing around with any complex gulp or grunt file. We wanted a simple package that housed all the essentials for SASS, LESS and JS. So now you don't need to include 10 dev dependencies, you only require a simple quilk.json file and have quilk globally installed.
+Quilk began as a single script which utilized the popular node-sass npm package plus the nice and light concat-files npm package together with the snappy chokidar file watcher. The result was a working solution for lower spec machines that was still rapid fast and didn't require `npm install` to download the entire internet.
 
-Using quilk either for personal use or as a company or as an agency, the build file will always look and feel the same. To build the std sass and js files there is only one way to go, configure a simple JSON. If the output works then the JSON is configured correctly, if it does then it is not. No room for funky code to make new devs on the project scratch their head and wonder what the flip is going on. Spending 8 months at an agency I was left scratching my head as to why this didn't already exist. Instead every time a new project was started a different developer would create a new build file in a different way to another.. 10 projects later and there are 10 different styles of build file all pretty much doing the same thing, but some better or worse than others.. maddening.
+As quilk grew and was being used in more projects, the configuration nature of quilk started to emerge. Using the same script on different projects but with just altering a few lines of a JSON file meant projects were setup in no time, and it was no longer possible to create a whacky build file... Roll forward to today and I use quilk in many projects using most of the std tools from sass to less to browserify.
 
-With quilk all the essentials are there out of the box. Want more functionality, write a simple node js module and you're away.. don't know how to write a simple node js module, no bother.. just type `quilk init example_module` and it will init your quilk.json file and create a sample custom module for you to play around with. 
+I only wrapped this into an "official" npm package recently to allow easier installation on other machines other than my own.
+
+## Install
+Quilk is not installed as a dependency in a package.json file, but installed globally:
+`npm install -g quilk`
 
 ## Getting started
 First up, I don't enjoy typing dashes before cli args, if you do that is fine they will still work but, the quilk cli command also work without, eg the following all map to the same thing.. help: `quilk help` `quilk -help` `quilk --help`
 
-Create your base `quilk.json` file by running from the root of your project:
- ```
+Create your base `quilk.json` file by running from the root of your project (or copying from another project):
+```
  quilk init
- ```
-This will bootstrap the current directory with a quilk.json file configured to run the `just_for_fun` module. After the init has finished you can take quilk for a test drive  by typing `quilk`, this will take the developer in the quilk.json named default to run the modules the quilk.json is configured to run, which in this case is just the fun run module. If you add a new developer this is used by typing `quilk d=<dev name>`
- 
+```
+This will bootstrap the current directory with a quilk.json file configured to run the `just_for_fun` module. After the init has finished you can take quilk for a test drive  by typing `quilk`, this will take the developer in the quilk.json named default and pass to the modules the quilk.json is configured to run, which in this case is just the fun run module (a different developer would be accessed with `quilk d=<name>` or `quilk developer=<name>`)
+
 For help on a specific module, find the module name (see lower down in the how it works section)
  ```
  quilk help module=<module>
  ```
 
-## Example single run 
+## Example single run
+With your quilk.json configured you can kick off a single run with:
 `quilk d=john`
 
 ## Example run then watch
+With your quilk.json configured running quilk with the watch argument run the modules then watch the files and rerun on a change (either a new file or change or removal):
 `quilk d=john watch`
 
 ## Example run for live
+In the quilk.json you will see a `release_commands_or_modules` section. Here you can add commands or modules to be run, note the pre and post section, this just means things run before the usual modules array or after. EG you may wish to run a bower install on an environment before running the std modules array, when completing you will likely wish to minify and compress the js and css files.
 `quilk release=live`
 
 ## How it works
@@ -58,7 +63,7 @@ When you start quilk, the runner simply loops and runs each module it finds in t
 
 The base modules quilk comes with handle the majority of tasks required to compile and build modern day web applications and the quilk.json can be configured in a matter of minutes. However, should you require something that is outside the std modules then you can simply write your own.
 
-1.  **The 9 modules** packaged with quilk and ready to go:
+1.  **The 9 modules** packaged with quilk and ready to go (see the kitchen sink example quilk.json):
     1. **browserify_bundle**: This will build a bundle.js from other js modules. A must for when building nodeJs web applications, use select server side code at the client and the client code at the server, less code to write.
     1. **js_find**: This will create a single js file based on js files it finds within an array of paths you provide. You may also state which files must be included at the top of the generated file.
     1. **js_fixed**: A simplified version of js_find, provide a static list of files and the module will simply concat them all together in a single js file.
@@ -74,9 +79,9 @@ The base modules quilk comes with handle the majority of tasks required to compi
     1.  **global.cliArgs**: All the command line arguments are stored here, if you want your module to pivot by cli args then this is where to look.    
     1.  **next**: The one and only argument that will be passed to each module is a callback. This will be the next module to be run after the current has finished.
     To create an example custom module run from the cli at the root of your project:
-       ``quilk init example_module`` 
-    
-    Example custom module in the quilk.json:
+       ``quilk init example_module``
+
+    Example custom module in the quilk.json (note the name of the module in the json is merely the filename minus the file extension):
     ```
     {
       "modules" : [
@@ -88,10 +93,10 @@ The base modules quilk comes with handle the majority of tasks required to compi
         },
         ... rest of the modules array
     ```   
-3.  **Config data** Each module requires its own set config data, and this data is set in the `quilk.json` file. See the full kitchen sink example below
-4.  **Dont watch** When using the watch option ensure that you instruct which file to not watch, `dont_watch`. 
+3.  **Config data**  See the full kitchen sink example below.
+4.  **Dont watch** When using the watch option ensure that you instruct which file to not watch, `dont_watch`.
     The `dont_watch` option is quilk.json is passed to chokidar as directories and exact files to not trigger on. EG should you build a css file from sass you don't want to trigger chokidar to run all the modules again when it spots a change in the said css file ie ending up in an infinite loop.
-5.  **Developers block** This can be as general or as granular as your like. As you can see from the example, this also contains developer specifics for the rsync module.
+5.  **Developers block** This can be as general or as granular as your like. As you can see from the example, this also contains developer specifics for the rsync module and notification popups (not everyone wants to see the notification ballon).
 
 ## Using quilk for release
 The release object is an object where each key is mapped to the `quilk release=<name>`. Each release object is comprised of a pre and post array. Each array is either a module object or a string cli command.
@@ -100,7 +105,7 @@ The pre array will get called before everything. Then the std quilk modules run.
 
 Both the pre and the post are optional. Please run `quilk init` and take a look at the init for more info.
 
-## Example kitchen sink quilk.json 
+## Example kitchen sink quilk.json
 (Note this example uses every out of the box module)
 ```
 {
