@@ -15,7 +15,7 @@ I will be fiddling around with and perfecting this over the next week or so. I w
 - got the node-minifier working with the lastest branch which should work nicely with npm 2 and 3.
 
 ### Known bug(s)
-- There is an issue with the Node-Minify npm package when on the latest version of npm. As the later version of npm stored the dependencies differently this is causing node-minify to not find uglify-js. This should hopefully be resolved very soon :/
+- Not got any as far as i know... but do let me know via github issues
 
 ### Index
 *  [Intro](#intro)
