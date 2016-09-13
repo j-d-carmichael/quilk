@@ -12,6 +12,7 @@ I will be fiddling around with and perfecting this over the next week or so. I w
 - The runner now ensures that directories for the module targets exist before running the respective modules, meaning the module doesn't have to worry about the existence or not of the target directory.
 - less_std logTime correction and quilk logTime bug fix
 - sass_std bug fix for the watcher
+- got the node-minifier working with the lastest branch which should work nicely with npm 2 and 3.
 
 ### Known bug(s)
 - There is an issue with the Node-Minify npm package when on the latest version of npm. As the later version of npm stored the dependencies differently this is causing node-minify to not find uglify-js. This should hopefully be resolved very soon :/
@@ -224,12 +225,22 @@ Both the pre and the post are optional. Please run `quilk init` and take a look 
   "release_commands_or_modules": {
     "live":{
       "pre": [
-        "echo 'PRE-LIVE-RELEASE command...'"
+        "echo 'install the dependencies from npm and bower...'",
+        "npm install -f",
+        "bower install -s"
       ],
       "post": [{
-        "name": "Just for fun",
-        "module": "just_for_fun",
-        "print_this": "This is the post std build command, note this is a quilk module"
+        "name": "minify the js",
+        "module": "node_minify",
+        "type":"uglifyjs",
+        "input":[ "/build/js/app.js", "/public/js/bundle.js" ],
+        "target": "/build/js/app.min.js"
+      },{
+        "name": "minify the css",
+        "module": "node_minify",
+        "type":"sqwish",
+        "input":[ "/build/css/app_less.css", "/build/css/app_sass.css", "/build/css/vendors.css" ],
+        "target": "/build/css/app.min.css"
       }]
     }
   },
