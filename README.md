@@ -9,6 +9,8 @@ I will be fiddling around with and perfecting this over the next week or so. I w
 
 ### Last update
 - The runner now ensures that directories for the module targets exist before running the respective modules, meaning the module doesn't have to worry about the existence or not of the target directory.
+- less_std logTime correction and quilk logTime bug fix
+- sass_std bug fix for the watcher
 
 
 ### Index
