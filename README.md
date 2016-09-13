@@ -9,13 +9,10 @@ I will be fiddling around with and perfecting this over the next week or so. I w
 
 
 ### Last update
-- The runner now ensures that directories for the module targets exist before running the respective modules, meaning the module doesn't have to worry about the existence or not of the target directory.
-- less_std logTime correction and quilk logTime bug fix
-- sass_std bug fix for the watcher
-- got the node-minifier working with the lastest branch which should work nicely with npm 2 and 3.
+- updated the internal rsync module with spawn, very light.
 
 ### Known bug(s)
-- Not got any as far as i know... but do let me know via github issues
+- A new bug has arisen with the watcher. Next job to fix.
 
 ### Index
 *  [Intro](#intro)
@@ -85,7 +82,7 @@ The base modules quilk comes with handle the majority of tasks required to compi
     1. **css_fixed**: A simple concat module, supply it paths from the root of your project and output will be one big css file. Perfect for including css from 3rd parties eg via bower.
     1. **sass_std**: A standard module to build css from sass files. The same as the less_std, provide the in and out and the module handles the rest. It being sass of course results in a much much faster time to compile.
     1. **sass_find**: Slightly different from the sass_find, this module will find sass files in paths you provide and create a single sass file, ever so slightly slower than the sass_std, but which ever floats your boat :)
-    1. **rsync**: Not everyone is a fan of overheating your local machine and burning it into the ground before it is due just so they can claim they can work on the bus. If this is you and you want ot ensure a dev env that is identical for everyone rsync is for you. Rsync only syncs the files that have changed since the last time it ran, opposed to all files every time. For a mid-weight project the build+sync time on a typical internet connection would be around 1-5 seconds, which, is far superior than the 5-10second load time of a vagrant machine, and far superior to have developers working on say nginx when the prod is apache etc etc. Now throw into the mix a remote or semi remote team, with the rsync module everybody can now see everybody else's dev environment from their own machine... bonus for everyone, the devs, the designers, the product owners and of course, the all important fillet steak holder. For windows users, a dependency for this to work is cygwin or cwrsync. Plenty of guides out there for installation, just ensure that rsync is available in your PATH var and ssh can connect to your dev machine via ssh keys without a pass-phrase. (http://www.beingyesterday.com/bitbucket-sourcetree-ide-rsync-dev-server/   Step 3).
+    1. **rsync**: Not everyone is a fan of overheating your local machine and burning it into the ground before it is due just so they can claim they can work on the bus. If this is you and you want ot ensure a dev env that is identical for everyone rsync is for you. Rsync only syncs the files that have changed since the last time it ran, opposed to all files every time. If you are using windows you would want to look at cygwin tools or cwrsync. This rsync module just uses nodejs 'require('child_process').spawn'. If you see something in rsync you want to use, just add it to the `set` array, see the kitchen sink for an example. NB the set array can either be global or developer specific
     1. **node_minify**: This is a direct mapping to the popular node_minify npm packge.
 2.  **Custom modules** Custom modules allow you to basically do anything you want with whatever you want. Custom modules must be placed inside a folder titled `quilk_modules` at the root of your project. Each module just needs to be a simple `module.export = function( next ){ //your code here; //then run the next module; next(); }`. Please take a look at the modules currently in use for an example on how to write your own. There are 4 things to play with in your modules:
     1.  **global.current_module**: This will be the current module object in the quilk.json. There is no required format, but see the example kitchen sink below for a starter.
@@ -201,6 +198,7 @@ Both the pre and the post are optional. Please run `quilk init` and take a look 
     {
       "name": "Rsync it",
       "module": "rsync",
+      "set"           : ["--quiet"],
       "ignore": {
         "linux" :   [],
         "windows" : [],
@@ -255,6 +253,7 @@ Both the pre and the post are optional. Please run `quilk init` and take a look 
         "sound": true
       },
       "rsync"         : {
+        "set"           : ["--compress-level=1"]
         "localPath"     : "/cygdrive/d/test_project/",
         "remote"        : "www-data@8.9.10.110",
         "serverPath"    : "/var/vhosts/service-test/"
