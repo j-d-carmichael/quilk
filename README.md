@@ -12,7 +12,7 @@ I will be fiddling around with and perfecting this over the next week or so. I w
 - updated the internal rsync module with spawn, very light.
 
 ### Known bug(s)
-- A new bug has arisen with the watcher. Next job to fix.
+- Cannot see any bugs yet... give me a holla if you see anything.
 
 ### Index
 *  [Intro](#intro)

@@ -1,6 +1,6 @@
 {
   "name": "quilk",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "description": "SASS LESS JS Concat Browserify Node-Minify and Rsync with one module, no dev dependencies required. Works well on HDD and SSDs.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
