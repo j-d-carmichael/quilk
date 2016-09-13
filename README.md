@@ -1,4 +1,5 @@
 #quilk
+Est. 4th Sept. 2015
 A builder and watcher with speed. No complex build configuration file required, just a simple JSON.
 
 ---
@@ -12,6 +13,8 @@ I will be fiddling around with and perfecting this over the next week or so. I w
 - less_std logTime correction and quilk logTime bug fix
 - sass_std bug fix for the watcher
 
+### Known bug(s)
+- There is an issue with the Node-Minify npm package when on the latest version of npm. As the later version of npm stored the dependencies differently this is causing node-minify to not find uglify-js. This should hopefully be resolved very soon :/
 
 ### Index
 *  [Intro](#intro)
