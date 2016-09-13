@@ -3,6 +3,14 @@ A builder and watcher with speed. No complex build configuration file required, 
 
 ---
 
+### Still a work in progress
+I will be fiddling around with and perfecting this over the next week or so. I will set the version number to 1.0.0 once I deem this stable. Currently building this up for a bit of a fun puzzle while on holiday :)
+
+
+### Last update
+- The runner now ensures that directories for the module targets exist before running the respective modules, meaning the module doesn't have to worry about the existence or not of the target directory.
+
+
 ### Index
 *  [Intro](#intro)
 *  [Install](#install)
