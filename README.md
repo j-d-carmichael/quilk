@@ -10,9 +10,10 @@ I will be fiddling around with and perfecting this over the next week or so. I w
 
 ### Last update
 - updated the internal rsync module with spawn, very light.
+- updated the watcher, race condition on the paths were being hit.
 
 ### Known bug(s)
-- Cannot see any bugs yet... give me a holla if you see anything.
+- Very minor. If you set the headers of your linux box to secure (see Lynis) the rsync module spits out a red error. It is not an error and can be ignored, not sure how to differentiate between it and a real error at the moment as they both come through the same channel :/ Does not harm functionality though.
 
 ### Index
 *  [Intro](#intro)
