@@ -19,6 +19,13 @@
         "name": "Just for fun",
         "module": "just_for_fun",
         "print_this": "This is the post std build command, note this is a quilk module"
+      }, {
+        "name": "Email total output",
+        "module": "email",
+        "config": "main",
+        "email_subject": "Logs from quilk build on live",
+        "email_message": "The quilk build for live has just finished.",
+        "include_log": true
       }]
     }
   },
@@ -31,6 +38,25 @@
         "style": "WindowsBalloon",
         "time" : 5000,
         "sound": true
+      }
+    }
+  },
+
+  "email": {
+    "dev": {
+      "email_to" : ["john@mail.com", "quilk@mrsquilks.com"],
+      "email_from" : {
+        "name": "quilk",
+        "email": "me@quilk.com"
+      },
+      "transport_options": {
+        "host": "smtp.gmail.com",
+        "port": 465,
+        "secure": true, // use SSL
+        "auth": {
+          "user": "john@gmail.com",
+          "pass": "password"
+        }
       }
     }
   }

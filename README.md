@@ -7,10 +7,15 @@ A builder and watcher with speed. No complex build configuration file required, 
 ### Still a work in progress
 I will be fiddling around with and perfecting this over the next week or so. I will set the version number to 1.0.0 once I deem this stable. Currently building this up for a bit of a fun puzzle while on holiday :)
 
-
 ### Last update
-- updated the internal rsync module with spawn, very light.
-- updated the watcher, race condition on the paths were being hit.
+- Just added the [email](#email-the-quilk-logs) module. This is a direct mapping to the popular node-mailer package. We found when using quilk that it would be nice when a build on the testing server failed or succeeded.. just configure some email details and plonk a use of the email module in a release post block and hey presto we all now know instantly when a build failed (it also captures all the console logs and includes these in the email too). See the [kitchen sink quilk.json](#example-kitchen-sink-quilkjson) for more.
+- The release commands can now be 1 of 3 formats. A straight up exec, pass as a simple string. A spawn, each bit of output is dumped to the console as and when it is outputted, pass a numeric array with the first param being the program. Modules, just as before... see the kitchen sink release block for an exmaple of all 3.
+- 3rd party quilk modules, either private (relative to current project level) or public (package from npm). Take a look at the [Custom modules](#custom-modules) for more info.
+
+### Next
+- Option to use env variables for the email module so as not to have to keep them in the config in plain text
+- Normalise all the logs over all existing module
+- Improve the docs
 
 ### Known bug(s)
 - Very minor. If you set the headers of your linux box to secure (see Lynis) the rsync module spits out a red error. It is not an error and can be ignored, not sure how to differentiate between it and a real error at the moment as they both come through the same channel :/ Does not harm functionality though.
@@ -23,7 +28,9 @@ I will be fiddling around with and perfecting this over the next week or so. I w
 *  [Example run then watch](#example-run-then-watch)
 *  [Example run for live](#example-run-for-live)
 *  [How it works](#how-it-works)
+*  [Custom modules](#custom-modules)
 *  [Using quilk for release](#using-quilk-for-release)
+*  [Email the quilk logs](#email-the-quilk-logs)
 *  [Example kitchen sink quilk.json](#example-kitchen-sink-quilkjson)
 *  [Example browserifyMain.js file](#example-browserifymainjs-file-which-requires-other-modules)
 *  [Which notifier to use](#which-notifier-to-use)
@@ -84,31 +91,71 @@ The base modules quilk comes with handle the majority of tasks required to compi
     1. **sass_std**: A standard module to build css from sass files. The same as the less_std, provide the in and out and the module handles the rest. It being sass of course results in a much much faster time to compile.
     1. **sass_find**: Slightly different from the sass_find, this module will find sass files in paths you provide and create a single sass file, ever so slightly slower than the sass_std, but which ever floats your boat :)
     1. **rsync**: Not everyone is a fan of overheating your local machine and burning it into the ground before it is due just so they can claim they can work on the bus. If this is you and you want ot ensure a dev env that is identical for everyone rsync is for you. Rsync only syncs the files that have changed since the last time it ran, opposed to all files every time. If you are using windows you would want to look at cygwin tools or cwrsync. This rsync module just uses nodejs 'require('child_process').spawn'. If you see something in rsync you want to use, just add it to the `set` array, see the kitchen sink for an example. NB the set array can either be global or developer specific
-    1. **node_minify**: This is a direct mapping to the popular node_minify npm packge.
-2.  **Custom modules** Custom modules allow you to basically do anything you want with whatever you want. Custom modules must be placed inside a folder titled `quilk_modules` at the root of your project. Each module just needs to be a simple `module.export = function( next ){ //your code here; //then run the next module; next(); }`. Please take a look at the modules currently in use for an example on how to write your own. There are 4 things to play with in your modules:
-    1.  **global.current_module**: This will be the current module object in the quilk.json. There is no required format, but see the example kitchen sink below for a starter.
-    1.  **global.chokidarFileChangePath**: If you are running quilk with watch then the current file that was changed will be in this variable.
-    1.  **global.cliArgs**: All the command line arguments are stored here, if you want your module to pivot by cli args then this is where to look.    
-    1.  **next**: The one and only argument that will be passed to each module is a callback. This will be the next module to be run after the current has finished.
-    To create an example custom module run from the cli at the root of your project:
-       ``quilk init example_module``
-
-    Example custom module in the quilk.json (note the name of the module in the json is merely the filename minus the file extension):
-    ```
-    {
-      "modules" : [
-        {
-          "name": "My module running",
-          "module" : "my_module",
-          "path_input": "/private/path/",
-          "path_output": "/public/path/"
-        },
-        ... rest of the modules array
-    ```   
+    1. **node_minify**: This is a direct mapping to the popular node_minify npm packge. 
 3.  **Config data**  See the full kitchen sink example below.
 4.  **Dont watch** When using the watch option ensure that you instruct which file to not watch, `dont_watch`.
     The `dont_watch` option is quilk.json is passed to chokidar as directories and exact files to not trigger on. EG should you build a css file from sass you don't want to trigger chokidar to run all the modules again when it spots a change in the said css file ie ending up in an infinite loop.
 5.  **Developers block** This can be as general or as granular as your like. As you can see from the example, this also contains developer specifics for the rsync module and notification popups (not everyone wants to see the notification ballon).
+
+## Custom modules
+Custom modules allow you to basically do anything you want with whatever you want. Currently there is no bundled modules in quilk with babelfy for example. If this is something you would want, a custom module is what you need... but you get the idea.
+
+There are two types of custom modules available to use:
+1.  A 3rd party npm package installed to you project in the usual node_modules folder, included in the package.json file as a dependency. 
+2.  Your own project custom module kept in a specific folder within your project titled `quilk_modules`.
+
+For a module to work with the quilk runner you just need to expose a function called `run`. If you are writing a 3rd party module for others to use then the main file of the npm package should export an object with a `run` function at the top level. For example if the main file of your 3rd party npm package was `index.js` then this would have to contain something like this (the module would look exactly the same if it was a custom project module in the `quilk_modules` of your project):
+```
+module.export = { 
+    run: function( next ){ 
+        /* the codey good stuff */ 
+            //put some good ingredients here please
+        /* when done call next */
+        next();
+    } 
+};
+``` 
+Obviously this run function can do all the donkey work of the module of can just be a gateway to something bigger and more complex, you decide.
+
+Here is a list of all the goodies you have access to in a module
+1.  **global.current_module**: This will be the current module object in the quilk.json. There is no required format, but see the example kitchen sink below for a starter. This is basially where you chunk in your project specific data. A little tip, if your module will write a file to disk, if you put this in the json as the `target` then the runner will automatically create the folders for you (checkout the kitchen sink json and note how they all have a `target` path).
+1.  **global.desktopNotify**: This function accepts 2 params, a title and message body. It will be actioned if the users notifications are turned on in the quilk.json file.
+1.  **global.chokidarFileChangePath**: If you are running quilk with watch then the current file that was changed will be in this variable. Handy for knowing when to skip the current module.. eg the less_std doesn't waste time building the less file if no less file was not altered.
+1.  **global.cliArgs**: All the command line arguments are stored here, if you want your module to pivot by cli args then this is where to look.    
+1.  **next**: The one and only argument that will be passed to each module is a callback. This will be the next module to be run after the current has finished. This is quite similar to expressJS's next functions in middlewares.
+    
+To create an example custom module run from the cli at the root of your project:
+```
+quilk init example_module
+```
+
+Example custom module in the quilk.json. To call a custom quilk module, if the module is a 3rd party from npm just enter the :
+```
+{
+  "modules" : [
+    {
+      "name": "My module running",
+      "module" : "my_module",
+      "path_input": "/private/path/",
+      "path_output": "/public/path/"
+    },
+    ... rest of the modules array
+```  
+
+Here is a simple 3rd party quilk module I built as an example:  https://www.npmjs.com/package/quilk-public-example-3rd-party-module
+
+Add it to the package.json of your project, and include `quilk-public-example-3rd-party-module` in your quilk.json module array eg:
+```
+{
+  "modules" : [
+    {
+      "name": "test 3rd party",
+      "module": "quilk-public-example-3rd-party-module"
+    },
+    ...
+```
+
+If you take a look at the code in `quilk-public-example-3rd-party-module` you will see it requires a module that is not part of the quilk npm package.. yet it still works without a hitch... this has only just been tested on npm 3.10.3. This may or may not break in npm < 3...  
 
 ## Using quilk for release
 The release object is an object where each key is mapped to the `quilk release=<name>`. Each release object is comprised of a pre and post array. Each array is either a module object or a string cli command.
@@ -116,6 +163,51 @@ The release object is an object where each key is mapped to the `quilk release=<
 The pre array will get called before everything. Then the std quilk modules run. Then the post array will run.
 
 Both the pre and the post are optional. Please run `quilk init` and take a look at the init for more info.
+
+## Email the quilk logs
+You can make use of the email in-built module to send out an email message, add include_log as true and then all the console log output will be captured in full html syntax with colour. 
+
+Here is an example of using a predefined email config block that will be triggered as the last module run in the live release array:
+```
+  ...
+  "release_commands_or_modules": {
+    "live":{
+      "post":[{
+        "name": "Email total output",
+        "module": "email",
+        "config": "dev",
+        "email_subject": "Logs from quilk build on live",
+        "email_message": "The quilk build for live has just finished, below the log output.",
+        "include_log": true
+      }]
+    },
+    ...
+```
+
+Note in the email the config section with the string 'main', this refers to a global email block eg:
+  ```
+  "email": {
+    "main": {
+      "email_to" : ["devs@some-email.net"],
+      "email_from" : {
+        "name": "quilk",
+        "email": "john@gmail.com"
+      },
+      "transport_options": {
+        "host": "smtp.gmail.com",
+        "port": 465,
+        "secure": true,
+        "auth": {
+          "user": "john@gmail.com",
+          "pass": "password"
+        }
+      }
+    }
+  }
+  ```
+
+You can as many blocks into this area as you want. You may quilk building on a dev server, a testing server and a production server and you may not want to be sedning emails with the same details. Just give each block a different name and refer to them in wherever you use the email module.
+
 
 ## Example kitchen sink quilk.json
 (Note this example uses every out of the box module)
@@ -225,8 +317,7 @@ Both the pre and the post are optional. Please run `quilk init` and take a look 
     "live":{
       "pre": [
         "echo 'install the dependencies from npm and bower...'",
-        "npm install -f",
-        "bower install -s"
+        ["bower", "install"]
       ],
       "post": [{
         "name": "minify the js",
@@ -240,6 +331,13 @@ Both the pre and the post are optional. Please run `quilk init` and take a look 
         "type":"sqwish",
         "input":[ "/build/css/app_less.css", "/build/css/app_sass.css", "/build/css/vendors.css" ],
         "target": "/build/css/app.min.css"
+      },{
+        "name": "Email total output",
+        "module": "email",
+        "config": "dev",
+        "email_subject": "Logs from quilk build on live",
+        "email_message": "The quilk build for live has just finished, below the log output.",
+        "include_log": true
       }]
     }
   },
@@ -260,7 +358,26 @@ Both the pre and the post are optional. Please run `quilk init` and take a look 
         "serverPath"    : "/var/vhosts/service-test/"
       }
     }
-  }
+  },
+  
+    "email": {
+      "dev": {
+        "email_to" : ["devs@some-email.com"],
+        "email_from" : {
+          "name": "quilk",
+          "email": "john@gmail.com"
+        },
+        "transport_options": {
+          "host": "smtp.gmail.com",
+          "port": 465,
+          "secure": true,
+          "auth": {
+            "user": "john@gmail.com",
+            "pass": "password"
+          }
+        }
+      }
+    }
 }
 ```
 
