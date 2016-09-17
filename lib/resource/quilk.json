@@ -50,12 +50,30 @@
         "email": "me@quilk.com"
       },
       "transport_options": {
+        "environment_variables": false,
         "host": "smtp.gmail.com",
         "port": 465,
-        "secure": true, // use SSL
+        "secure": true,
         "auth": {
           "user": "john@gmail.com",
           "pass": "password"
+        }
+      }
+    },
+    "live": {
+      "email_to" : ["john@mail.com", "quilk@mrsquilks.com"],
+      "email_from" : {
+        "name": "quilk",
+        "email": "me@quilk.com"
+      },
+      "transport_options": {
+        "environment_variables": true,
+        "host": "EMAIL_HOST",
+        "port": "EMAIL_PORT",
+        "secure": true,
+        "auth": {
+          "user": "EMAIL_USER",
+          "pass": "EMAIL_PASS"
         }
       }
     }

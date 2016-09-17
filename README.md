@@ -9,11 +9,12 @@ I will be fiddling around with and perfecting this over the next week or so. I w
 
 ### Last update
 - Just added the [email](#email-the-quilk-logs) module. This is a direct mapping to the popular node-mailer package. We found when using quilk that it would be nice when a build on the testing server failed or succeeded.. just configure some email details and plonk a use of the email module in a release post block and hey presto we all now know instantly when a build failed (it also captures all the console logs and includes these in the email too). See the [kitchen sink quilk.json](#example-kitchen-sink-quilkjson) for more.
+- The email module can be configured with hard-coded values or environment variables, see the kitchen sink json for examples
 - The release commands can now be 1 of 3 formats. A straight up exec, pass as a simple string. A spawn, each bit of output is dumped to the console as and when it is outputted, pass a numeric array with the first param being the program. Modules, just as before... see the kitchen sink release block for an exmaple of all 3.
 - 3rd party quilk modules, either private (relative to current project level) or public (package from npm). Take a look at the [Custom modules](#custom-modules) for more info.
 
 ### Next
-- Option to use env variables for the email module so as not to have to keep them in the config in plain text
+- Add support for sendmail in the email module
 - Normalise all the logs over all existing module
 - Improve the docs
 
@@ -194,6 +195,7 @@ Note in the email the config section with the string 'main', this refers to a gl
         "email": "john@gmail.com"
       },
       "transport_options": {
+        "environment_variables": false,
         "host": "smtp.gmail.com",
         "port": 465,
         "secure": true,
@@ -360,24 +362,41 @@ You can as many blocks into this area as you want. You may quilk building on a d
     }
   },
   
-    "email": {
-      "dev": {
-        "email_to" : ["devs@some-email.com"],
-        "email_from" : {
-          "name": "quilk",
-          "email": "john@gmail.com"
-        },
-        "transport_options": {
-          "host": "smtp.gmail.com",
-          "port": 465,
-          "secure": true,
-          "auth": {
-            "user": "john@gmail.com",
-            "pass": "password"
-          }
+  "email": {
+    "dev": {
+      "email_to" : ["john@mail.com", "quilk@mrsquilks.com"],
+      "email_from" : {
+        "name": "quilk",
+        "email": "me@quilk.com"
+      },
+      "transport_options": {
+        "host": "smtp.gmail.com",
+        "port": 465,
+        "secure": true,
+        "auth": {
+          "user": "john@gmail.com",
+          "pass": "password"
+        }
+      }
+    },
+    "live": {
+      "email_to" : ["john@mail.com", "quilk@mrsquilks.com"],
+      "email_from" : {
+        "name": "quilk",
+        "email": "me@quilk.com"
+      },
+      "transport_options": {
+        "environment_variables": true,
+        "host": "EMAIL_HOST",
+        "port": "EMAIL_PORT",
+        "secure": "EMAIL_SECURE",
+        "auth": {
+          "user": "EMAIL_USER",
+          "pass": "EMAIL_PASS"
         }
       }
     }
+  }
 }
 ```
 
