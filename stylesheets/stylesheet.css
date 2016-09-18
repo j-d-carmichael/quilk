@@ -368,6 +368,12 @@ Full-Width Styles
   background: #212121;
 }
 
+.ads{
+  margin-top: 50px;
+}
+.centered{
+  text-align: center;
+}
 
 
 /*******************************************************************************
