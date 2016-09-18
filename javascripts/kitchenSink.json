@@ -117,13 +117,22 @@
         "type":"sqwish",
         "input":[ "/build/css/app_less.css", "/build/css/app_sass.css", "/build/css/vendors.css" ],
         "target": "/build/css/app.min.css"
-      },{
-        "name": "Email total output",
-        "module": "email",
-        "config": "dev",
-        "email_subject": "Logs from quilk build on live",
-        "email_message": "The quilk build for live has just finished, below the log output.",
-        "include_log": true
+      }],
+      "complete" : {
+        "email": {
+          "name": "Email total output",
+          "module": "email",
+          "config": "main",
+          "email_subject": "Logs from quilk build on live",
+          "email_message": "The quilk build for live has just finished.",
+          "include_log": true
+        }
+      },
+      "error" : [{
+        "name" : "Pinging slack",
+        "module" : "webhook",
+        "message_start" : "Error building, here are the quilk logs",
+        "url" : "https://hooks.slack.com/services/11111111/000000000/000000000003"
       }]
     }
   },

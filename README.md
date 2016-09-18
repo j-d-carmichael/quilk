@@ -5,9 +5,13 @@ A builder and watcher with speed. No complex build configuration file required, 
 ---
 
 ### Still a work in progress
-I will be fiddling around with and perfecting this over the next week or so. I will set the version number to 1.0.0 once I deem this stable. Currently building this up for a bit of a fun puzzle while on holiday :)
+The version number will be moved to 1.0.0 once I deem this stable.
 
-### Last update
+### Last updates
+- Standardised the logging from the modules.
+- Created a new global entity, die. This if called during a release will run the error block of the release if it exists before process.exit(); so basically you now know wher stuff breaks on a server for example.
+- Extended the release runner, upon completion the runner will now run a separate block, eg call a webhook or send an email.
+- Just added the webhook module.
 - Just added the [email](#email-the-quilk-logs) module. This is a direct mapping to the popular node-mailer package. We found when using quilk that it would be nice when a build on the testing server failed or succeeded.. just configure some email details and plonk a use of the email module in a release post block and hey presto we all now know instantly when a build failed (it also captures all the console logs and includes these in the email too). See the [kitchen sink quilk.json](#example-kitchen-sink-quilkjson) for more.
 - The email module can be configured with hard-coded values or environment variables, see the kitchen sink json for examples
 - The release commands can now be 1 of 3 formats. A straight up exec, pass as a simple string. A spawn, each bit of output is dumped to the console as and when it is outputted, pass a numeric array with the first param being the program. Modules, just as before... see the kitchen sink release block for an exmaple of all 3.
@@ -15,7 +19,6 @@ I will be fiddling around with and perfecting this over the next week or so. I w
 
 ### Next
 - Add support for sendmail in the email module
-- Normalise all the logs over all existing module
 - Improve the docs
 
 ### Known bug(s)
@@ -159,11 +162,46 @@ Add it to the package.json of your project, and include `quilk-public-example-3r
 If you take a look at the code in `quilk-public-example-3rd-party-module` you will see it requires a module that is not part of the quilk npm package.. yet it still works without a hitch... this has only just been tested on npm 3.10.3. This may or may not break in npm < 3...  
 
 ## Using quilk for release
-The release object is an object where each key is mapped to the `quilk release=<name>`. Each release object is comprised of a pre and post array. Each array is either a module object or a string cli command.
+You can configure quilk to run additional modules and commands for specific environments, eg a dev server where you want to test compressed and obfusicated code.
 
-The pre array will get called before everything. Then the std quilk modules run. Then the post array will run.
+This is acheived with the `release_commands_or_modules` block of the quilk json. The release block can contain as many different releases as you like, eg "dev", "staging", "live".
 
-Both the pre and the post are optional. Please run `quilk init` and take a look at the init for more info.
+Each block can contain either or all of the following:
+1.  `pre` this is stuff that will be called before the std quilk modules.
+1.  `post` this is stuff that will be called after the std quilk modules.
+1.  `complete` this is stuff that will be called after the `post` and with zero errors.
+1.  `error` this will be called when there is an error found in the pre, std modules, post or even complete.
+
+Please see the kicthen sink json for a fuller example:  [Example kitchen sink quilk.json](#example-kitchen-sink-quilkjson)
+
+
+## Webooks
+You can configure a release object to post the quilk output to a url... aka a webhook. Just provide the url and opening message and you good to go.
+EG:
+```
+   ...
+    "error" : [{
+        "name" : "Pinging slack",
+        "module" : "webhook",
+        "message_start" : "Error building 007 server, here are the quilk logs",
+        "url" : "https://hooks.slack.com/services/11111111/000000000/000000000003"
+      }]
+   ...   
+```
+If you need to pass any basic auth credential to the webhook you will need to add an additional 2 params, EG:
+```
+   ...
+    "error" : [{
+        "name" : "Pinging secret service",
+        "module" : "webhook",
+        "message_start" : "Error building 007 server, here are the quilk logs",
+        "url" : "https://hooks.secret.com/services/11111111/000000000/000000000003",
+        "auth_username": "bob",
+        "auth_password": "has a secure password"
+      }]
+   ...   
+```
+
 
 ## Email the quilk logs
 You can make use of the email in-built module to send out an email message, add include_log as true and then all the console log output will be captured in full html syntax with colour. 

@@ -19,14 +19,17 @@
         "name": "Just for fun",
         "module": "just_for_fun",
         "print_this": "This is the post std build command, note this is a quilk module"
-      }, {
-        "name": "Email total output",
-        "module": "email",
-        "config": "main",
-        "email_subject": "Logs from quilk build on live",
-        "email_message": "The quilk build for live has just finished.",
-        "include_log": true
-      }]
+      }],
+      "complete" : {
+        "email": {
+          "name": "Email total output",
+          "module": "email",
+          "config": "main",
+          "email_subject": "Logs from quilk build on live",
+          "email_message": "The quilk build for live has just finished.",
+          "include_log": true
+        }
+      }
     }
   },
 
