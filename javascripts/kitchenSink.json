@@ -118,16 +118,14 @@
         "input":[ "/build/css/app_less.css", "/build/css/app_sass.css", "/build/css/vendors.css" ],
         "target": "/build/css/app.min.css"
       }],
-      "complete" : {
-        "email": {
-          "name": "Email total output",
-          "module": "email",
-          "config": "main",
-          "email_subject": "Logs from quilk build on live",
-          "email_message": "The quilk build for live has just finished.",
-          "include_log": true
-        }
-      },
+      "complete" : [{
+        "name": "Email total output",
+        "module": "email",
+        "config": "main",
+        "email_subject": "Logs from quilk build on live",
+        "email_message": "The quilk build for live has just finished.",
+        "include_log": true
+      }],
       "error" : [{
         "name" : "Pinging slack",
         "module" : "webhook",
