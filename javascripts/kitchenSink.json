@@ -129,6 +129,7 @@
       "error" : [{
         "name" : "Pinging slack",
         "module" : "webhook",
+        "include_logs": true,
         "message_start" : "Error building, here are the quilk logs",
         "url" : "https://hooks.slack.com/services/11111111/000000000/000000000003"
       }]
