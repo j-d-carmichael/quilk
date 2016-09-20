@@ -1,3 +1,5 @@
+![](https://img.shields.io/npm/v/quilk.svg) ![](https://img.shields.io/npm/dm/quilk.svg)
+
 #quilk
 Est. 4th Sept. 2016
 A builder and watcher with speed. No complex build configuration file required, just a simple JSON.
