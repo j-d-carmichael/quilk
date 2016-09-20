@@ -22,6 +22,7 @@ The version number will be moved to 1.0.0 once I deem this stable.
 ### Next
 - Add support for sendmail in the email module
 - Improve the docs
+- Write some tests
 
 ### Known bug(s)
 - Very minor. If you set the headers of your linux box to secure (see Lynis) the rsync module spits out a red error. It is not an error and can be ignored, not sure how to differentiate between it and a real error at the moment as they both come through the same channel :/ Does not harm functionality though.
