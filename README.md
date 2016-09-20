@@ -18,7 +18,6 @@ The version number will be moved to 1.0.0 once I deem this stable.
 - 3rd party quilk modules, either private (relative to current project level) or public (package from npm). Take a look at the [Custom modules](#custom-modules) for more info.
 
 ### Next
-- Remove the dependency that uses karg as this uses a proxy to download as well as demanding node 1.0.0+
 - Add support for sendmail in the email module
 - Improve the docs
 
