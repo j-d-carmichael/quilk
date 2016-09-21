@@ -10,6 +10,7 @@ A builder and watcher with speed. No complex build configuration file required, 
 The version number will be moved to 1.0.0 once I deem this stable.
 
 ### Last updates
+- Just added sendmail option to the email module.
 - Moved to the simple ansi-html in the email module as it has zero dependencies.
 - Standardised the logging from the modules.
 - Created a new global entity, die. This if called during a release will run the error block of the release if it exists before process.exit(); so basically you now know wher stuff breaks on a server for example.
@@ -21,7 +22,6 @@ The version number will be moved to 1.0.0 once I deem this stable.
 - 3rd party quilk modules, either private (relative to current project level) or public (package from npm). Take a look at the [Custom modules](#custom-modules) for more info.
 
 ### Next
-- Add support for sendmail in the email module
 - Improve the docs
 - Write some tests
 
