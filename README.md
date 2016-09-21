@@ -10,6 +10,7 @@ A builder and watcher with speed. No complex build configuration file required, 
 The version number will be moved to 1.0.0 once I deem this stable.
 
 ### Last updates
+- Min node version added to the quilk package json.
 - Just added sendmail option to the email module.
 - Moved to the simple ansi-html in the email module as it has zero dependencies.
 - Standardised the logging from the modules.
