@@ -1,6 +1,6 @@
 {
   "name": "quilk",
-  "version": "0.10.18",
+  "version": "1.0.0",
   "engines" : {
     "node" : ">=0.12.0"
   },

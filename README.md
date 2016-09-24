@@ -1,33 +1,14 @@
-![](https://img.shields.io/npm/v/quilk.svg) ![](https://img.shields.io/npm/dm/quilk.svg)
+![](https://img.shields.io/npm/v/quilk.svg) ![](https://img.shields.io/npm/dt/quilk.svg)
 
 #quilk
 Est. 4th Sept. 2016
-A builder and watcher with speed. No complex build configuration file required, just a simple JSON.
+
+Use a single quilk.json file locally, on a dev server, a staging server and production server. Use quilk to build your web applications. Ping messages via email or webhooks (eg Slack) when builds are complete or failed.
 
 ---
 
-### Still a work in progress
-The version number will be moved to 1.0.0 once I deem this stable.
-
-### Last updates
-- Min node version added to the quilk package json.
-- Just added sendmail option to the email module.
-- Moved to the simple ansi-html in the email module as it has zero dependencies.
-- Standardised the logging from the modules.
-- Created a new global entity, die. This if called during a release will run the error block of the release if it exists before process.exit(); so basically you now know wher stuff breaks on a server for example.
-- Extended the release runner, upon completion the runner will now run a separate block, eg call a webhook or send an email.
-- Just added the webhook module.
-- Just added the [email](#email-the-quilk-logs) module. This is a direct mapping to the popular node-mailer package. We found when using quilk that it would be nice when a build on the testing server failed or succeeded.. just configure some email details and plonk a use of the email module in a release post block and hey presto we all now know instantly when a build failed (it also captures all the console logs and includes these in the email too). See the [kitchen sink quilk.json](#example-kitchen-sink-quilkjson) for more.
-- The email module can be configured with hard-coded values or environment variables, see the kitchen sink json for examples
-- The release commands can now be 1 of 3 formats. A straight up exec, pass as a simple string. A spawn, each bit of output is dumped to the console as and when it is outputted, pass a numeric array with the first param being the program. Modules, just as before... see the kitchen sink release block for an exmaple of all 3.
-- 3rd party quilk modules, either private (relative to current project level) or public (package from npm). Take a look at the [Custom modules](#custom-modules) for more info.
-
-### Next
-- Improve the docs
-- Write some tests
-
-### Known bug(s)
-- Very minor. If you set the headers of your linux box to secure (see Lynis) the rsync module spits out a red error. It is not an error and can be ignored, not sure how to differentiate between it and a real error at the moment as they both come through the same channel :/ Does not harm functionality though.
+#### Coming Next
+- Improve the docs. Quilk now offers a lot of out of the box functionality but the documentation is not great, this will be coming it later releases.
 
 ### Index
 *  [Intro](#intro)
