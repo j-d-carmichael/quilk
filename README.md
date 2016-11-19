@@ -3,12 +3,15 @@
 #quilk
 Est. 4th Sept. 2016
 
+*If anyone fancies helping evolve quilk give me a shout, many [skilled] hands make light work.*
+
 Use a single quilk.json file locally, on a dev server, a staging server and production server. Use quilk to build your web applications. Ping messages via email or webhooks (eg Slack) when builds are complete or failed.
 
 ---
 
 #### Latest release
-- Rolled back node-sass to 3.9.3 as there were a few issues with the latest versions of Nodejs. Once they have been resolved the node-sass version will be bumped up in quilk.
+- Latest node-sass added to the stack. NB: if you are using quilk on ubuntu 16 + node 6.9.1 + npm 3.10.8... ensure you completely uninstall quilk from your system before installing the latest version, then double check is really is gone from your global node_modules directory (`npm root -g` to discover the location). This may or may not affect you, but i recently migrated a server from Ubuntu 14 -> 16 which I think left some dangling files maybe... which resulted in a quilk upgrade hanging. Anyway, as every support guy ever said.. "Have you tried turning it on and off again" :D :D
+
 
 #### Coming Next
 - Improve the docs. Quilk now offers a lot of out of the box functionality but the documentation is not great, this will be coming it later releases.

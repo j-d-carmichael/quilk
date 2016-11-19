@@ -1,6 +1,6 @@
 {
   "name": "quilk",
-  "version": "1.1.2",
+  "version": "1.1.4",
   "engines" : {
     "node" : ">=4.0.0"
   },
@@ -45,7 +45,7 @@
     "nodemailer-sendmail-transport" : "1.0.0",
     "node-minify"                   : "2.0.0",
     "node-notifier"                 : "4.6.1",
-    "node-sass"                     : "3.9.3",
+    "node-sass"                     : "3.13.0",
     "q"                             : "1.4.1",
     "recursive-readdir"             : "2.1.0",
     "request"                       : "2.78.0"
