@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>       <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>          <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>          <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <title>Modules custom - quilk</title>
+    <meta name="description" content="The easiest way to build your application client side code!" />
+    <meta name="author" content="John Carmichael">
+    <meta charset="UTF-8">
+    <link rel="icon" href="themes/daux/img/favicon-red.png" type="image/x-icon">
+    <!-- Mobile -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700&subset=latin,cyrillic-ext,cyrillic' rel='stylesheet' type='text/css'>
+    <!-- CSS -->
+    <link href='themes/daux/css/theme-red.min.css' rel='stylesheet' type='text/css'>
+            <!-- Tipue Search -->
+        <link href="tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body class="with-float">
+    
+<header class="Navbar hidden-print">
+    <a class="Navbar__brand" href="index.html">quilk</a>
+
+    <div class="Search">
+        <svg class="Search__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451"><path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z"/></svg>
+        <input type="search" id="tipue_search_input" class="Search__field" placeholder="Search..." autocomplete="on" results=25 autosave=text_search>
+    </div>
+</header>
+<div class="Columns content">
+    <aside class="Columns__left Collapsible">
+        <div class="Collapsible__container">
+            <button type="button" class="Button Collapsible__trigger">
+                <span class="Collapsible__trigger--bar"></span>
+                <span class="Collapsible__trigger--bar"></span>
+                <span class="Collapsible__trigger--bar"></span>
+            </button>
+        </div>
+
+        <div class="Collapsible__content">
+            <!-- Navigation -->
+            <ul class='Nav'><li class='Nav__item '><a href="How_it_works.html">How it works</a></li><li class='Nav__item '><a href="Installation.html">Installation</a></li><li class='Nav__item '><a href="Updating.html">Updating</a></li><li class='Nav__item '><a href="Getting_started.html">Getting started</a></li><li class='Nav__item '><a href="Desktop_notifications.html">Desktop notifications</a></li><li class='Nav__item  has-children'><a href="Modules_baked_in/browserify_bundle.html" class="folder"><i class="Nav__arrow">&nbsp;</i>Modules baked in</a><ul class='Nav'><li class='Nav__item '><a href="Modules_baked_in/browserify_bundle.html">browserify bundle</a></li><li class='Nav__item '><a href="Modules_baked_in/css_fixed.html">css fixed</a></li><li class='Nav__item '><a href="Modules_baked_in/js_find.html">js find</a></li><li class='Nav__item '><a href="Modules_baked_in/js_fixed.html">js fixed</a></li><li class='Nav__item '><a href="Modules_baked_in/less_std.html">less std</a></li><li class='Nav__item '><a href="Modules_baked_in/node_minify.html">node minify</a></li><li class='Nav__item '><a href="Modules_baked_in/rsync.html">rsync</a></li><li class='Nav__item '><a href="Modules_baked_in/sass_find.html">sass find</a></li><li class='Nav__item '><a href="Modules_baked_in/sass_std.html">sass std</a></li></ul></li><li class='Nav__item Nav__item--active'><a href="Modules_custom.html">Modules custom</a></li><li class='Nav__item '><a href="Developer_settings.html">Developer settings</a></li><li class='Nav__item '><a href="Watcher.html">Watcher</a></li><li class='Nav__item '><a href="Emailing.html">Emailing</a></li><li class='Nav__item '><a href="Webhooks.html">Webhooks</a></li><li class='Nav__item '><a href="Release_builds.html">Release builds</a></li><li class='Nav__item '><a href="The_kitchen_sink_example_JSON.html">The kitchen sink example JSON</a></li><li class='Nav__item '><a href="TODO.html">TODO</a></li></ul>
+
+            <div class="Links">
+                                    <hr/>
+                                            <a href="https://npmjs.com/package/quilk" target="_blank">NPM</a>
+                        <br />
+                                            <a href="https://github.com/johnc1984/quilk" target="_blank">GitHub Repo</a>
+                        <br />
+                                    
+                                    <div class="CodeToggler">
+                        <hr/>
+                                                    <span class="CodeToggler__text">Code blocks</span>
+                            <div class="ButtonGroup" role="group">
+                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--hide">No</button>
+                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--below">Below</button>
+                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--float">Inline</button>
+                            </div>
+                                            </div>
+                
+                            </div>
+        </div>
+    </aside>
+    <div class="Columns__right Columns__right--float">
+        <div class="Columns__right__content">
+            <div class="doc_content">
+                <article class="Page">
+
+    <div class="Page__header">
+        <h1><a href="Modules_custom.html">Modules custom</a></h1>
+                <span style="float: left; font-size: 10px; color: gray;">
+            Saturday, November 19, 2016 10:58 AM        </span>
+                    </div>
+
+
+    <div class="s-content">
+        <p>Custom modules allow you to basically do anything you want with whatever you want. Currently there is no bundled modules in quilk with babelfy for example. If this is something you would want, a custom module is what you need... but you get the idea.</p>
+<p>There are two types of custom modules available to use:</p>
+<ol>
+<li>A 3rd party npm package installed to you project in the usual node_modules folder, included in the package.json file as a dependency.</li>
+<li>Your own project custom module kept in a specific folder within your project titled <code>quilk_modules</code>.</li>
+</ol>
+<p>For a module to work with the quilk runner you just need to expose a function called <code>run</code>. If you are writing a 3rd party module for others to use then the main file of the npm package should export an object with a <code>run</code> function at the top level. For example if the main file of your 3rd party npm package was <code>index.js</code> then this would have to contain something like this (the module would look exactly the same if it was a custom project module in the <code>quilk_modules</code> of your project):</p>
+<pre><code>module.export = { 
+    run: function( next ){ 
+        /* the codey good stuff */ 
+            //put some good ingredients here please
+        /* when done call next */
+        next();
+    } 
+};
+</code></pre>
+<p>Obviously this run function can do all the donkey work of the module of can just be a gateway to something bigger and more complex, you decide.</p>
+<p>Here is a list of all the goodies you have access to in a module</p>
+<ol>
+<li>
+<strong>global.current_module</strong>: This will be the current module object in the quilk.json. There is no required format, but see the example kitchen sink below for a starter. This is basially where you chunk in your project specific data. A little tip, if your module will write a file to disk, if you put this in the json as the <code>target</code> then the runner will automatically create the folders for you (checkout the kitchen sink json and note how they all have a <code>target</code> path).</li>
+<li>
+<strong>global.desktopNotify</strong>: This function accepts 2 params, a title and message body. It will be actioned if the users notifications are turned on in the quilk.json file.</li>
+<li>
+<strong>global.chokidarFileChangePath</strong>: If you are running quilk with watch then the current file that was changed will be in this variable. Handy for knowing when to skip the current module.. eg the less_std doesn't waste time building the less file if no less file was not altered.</li>
+<li>
+<strong>global.cliArgs</strong>: All the command line arguments are stored here, if you want your module to pivot by cli args then this is where to look.</li>
+<li>
+<strong>next</strong>: The one and only argument that will be passed to each module is a callback. This will be the next module to be run after the current has finished. This is quite similar to expressJS's next functions in middlewares.</li>
+</ol>
+<p>To create an example custom module run from the cli at the root of your project:</p>
+<pre><code>quilk init example_module
+</code></pre>
+<p>Example custom module in the quilk.json. To call a custom quilk module, if the module is a 3rd party from npm just enter the :</p>
+<pre><code>{
+  &quot;modules&quot; : [
+    {
+      &quot;name&quot;: &quot;My module running&quot;,
+      &quot;module&quot; : &quot;my_module&quot;,
+      &quot;path_input&quot;: &quot;/private/path/&quot;,
+      &quot;path_output&quot;: &quot;/public/path/&quot;
+    },
+    ... rest of the modules array
+</code></pre>
+<p>Here is a simple 3rd party quilk module I built as an example:  https://www.npmjs.com/package/quilk-public-example-3rd-party-module</p>
+<p>Add it to the package.json of your project, and include <code>quilk-public-example-3rd-party-module</code> in your quilk.json module array eg:</p>
+<pre><code>{
+  &quot;modules&quot; : [
+    {
+      &quot;name&quot;: &quot;test 3rd party&quot;,
+      &quot;module&quot;: &quot;quilk-public-example-3rd-party-module&quot;
+    },
+    ...
+</code></pre>
+<p>If you take a look at the code in <code>quilk-public-example-3rd-party-module</code> you will see it requires a module that is not part of the quilk npm package.. yet it still works without a hitch... this has only just been tested on npm 3.10.3. This may or may not break in npm &lt; 3...</p>
+    </div>
+
+        <nav>
+        <ul class="Pager">
+            <li class=Pager--prev><a href="Modules_baked_in/sass_std.html">Previous</a></li>            <li class=Pager--next><a href="Developer_settings.html">Next</a></li>        </ul>
+    </nav>
+    </article>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    <!-- jQuery -->
+    <script src="themes/daux/js/jquery-1.11.3.min.js"></script>
+
+    <!-- hightlight.js -->
+    <script src="themes/daux/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- JS -->
+    
+    <script src="themes/daux/js/daux.js"></script>
+
+            <!-- Tipue Search -->
+        <script type="text/javascript" src="tipuesearch/tipuesearch.js"></script>
+
+        <script>
+            window.onunload = function(){}; // force $(document).ready to be called on back/forward navigation in firefox
+            $(function() {
+                tipuesearch({
+                    'base_url': ''
+                });
+            });
+        </script>
+    
+</body>
+</html>
