@@ -7,6 +7,9 @@ Use a single quilk.json file locally, on a dev server, a staging server and prod
 
 ---
 
+#### Latest release
+- Rolled back node-sass to 3.9.3 as there were a few issues with the latest versions of Nodejs. Once they have been resolved the node-sass version will be bumped up in quilk.
+
 #### Coming Next
 - Improve the docs. Quilk now offers a lot of out of the box functionality but the documentation is not great, this will be coming it later releases.
 
