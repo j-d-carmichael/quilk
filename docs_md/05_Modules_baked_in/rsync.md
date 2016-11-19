@@ -1,3 +1,0 @@
-**rsync**
-
-Not everyone is a fan of overheating your local machine and burning it into the ground before it is due just so they can claim they can work on the bus. If this is you and you want ot ensure a dev env that is identical for everyone rsync is for you. Rsync only syncs the files that have changed since the last time it ran, opposed to all files every time. If you are using windows you would want to look at cygwin tools or cwrsync. This rsync module just uses nodejs 'require('child_process').spawn'. If you see something in rsync you want to use, just add it to the `set` array, see the kitchen sink for an example. NB the set array can either be global or developer specific
