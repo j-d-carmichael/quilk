@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Quilk by johnc1984</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Quilk</h1>
+      <h2 class="project-tagline">quilk </h2>
+      <a href="https://github.com/johnc1984/quilk" class="btn">View on GitHub</a>
+      <a href="https://github.com/johnc1984/quilk/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/johnc1984/quilk/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <pre><code>
+{
+  "modules" : [
+    {
+      "name": "Browserify files",
+      "module" : "browserify_bundle",
+      "browserify_main": "/public/browserify_modules/browserifyMain.js",
+      "browserify_bundle_name": "bfyModules",
+      "target" : "/public/js/bundle.js"
+    },
+    {
+      "name" : "Vendor Files",
+      "module": "js_fixed",
+      "files": [
+        "/public/bower_components/jquery/dist/jquery.js",
+        "/public/bower_components/bootstrap/dist/js/bootstrap.min.js",
+        "/public/bower_components/angular/angular.min.js",
+        "/public/bower_components/angular-route/angular-route.min.js",
+        "/public/bower_components/angular-sanitize/angular-sanitize.min.js",
+        "/public/bower_components/angular-bootstrap/ui-bootstrap.min.js",
+        "/public/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js",
+        "/public/bower_components/ngDialog/js/ngDialog.min.js"
+      ],
+      "target": "/public/js/vendor.js"
+    },
+    {
+      "name": "App Files",
+      "module": "js_find",
+      "include_first": [
+        "/public/js_to_compile/globalOverrideFunctions.js",
+        "/public/js_to_compile/app.js",
+        "/public/js_to_compile/app.config.js"
+      ],
+      "find_in_paths": [
+        "/public/js_to_compile/"
+      ],
+      "target" : "/public/js/build.js"
+    },
+    {
+      "name": "App CSS",
+      "module": "sass_std",
+      "outputStyle": "expanded",
+      "sourceComments": true,
+      "input_path": "/resources/assets/sass/app.scss",
+      "target": "/public/css/all.css"
+    },
+    {
+      "name": "App CSS (SASS find)",
+      "module": "sass_find",
+      "outputStyle": "expanded",
+      "sourceComments": true,
+      "include_first": [
+        "/public/app/core/scss/global.scss"
+      ],
+      "ignorePaths" : [
+        "core/scss"
+      ],
+      "find_in_path": "/public/app/",
+      "target": "/public/css/index.css"
+    },
+    {
+      "name"   : "Less compiler",
+      "module" : "less_std",
+      "resourcePaths" : ["/resources/assets/less/"],
+      "input_path"  : "/resources/assets/less/xenon.less",
+      "target" : "/public/css/app.css"
+    },
+    {
+      "name" : "Vendor CSS Files",
+      "module": "css_fixed",
+      "files": [
+        "/public/bower_components/bootstrap/dist/css/bootstrap.css",
+        "/public/bower_components/ngDialog/css/ngDialog.css",
+        "/public/bower_components/ngDialog/css/ngDialog-theme-plain.css"
+      ],
+      "target": "/public/css/vendor.css"
+    },
+    {
+      "name": "Rsync it",
+      "module": "rsync",
+      "set"           : ["--quiet"],
+      "ignore": {
+        "linux" :   [],
+        "windows" : [],
+        "mac"     : [],
+        "global"  : [
+          ".git*",
+          ".idea*",
+          "storage",
+          "node_modules/*",
+          "tests/*",
+          "vendor/*"
+        ]
+      }
+    }
+  ],
+
+  "dont_watch": [
+    "public/js/",
+    "public/css/all.css"
+  ],
+
+  "release_commands_or_modules": {
+    "live":{
+      "pre": [
+        "echo 'install the dependencies from npm and bower...'",
+        ["bower", "install"]
+      ],
+      "post": [{
+        "name": "minify the js",
+        "module": "node_minify",
+        "type":"uglifyjs",
+        "input":[ "/build/js/app.js", "/public/js/bundle.js" ],
+        "target": "/build/js/app.min.js"
+      },{
+        "name": "minify the css",
+        "module": "node_minify",
+        "type":"sqwish",
+        "input":[ "/build/css/app_less.css", "/build/css/app_sass.css", "/build/css/vendors.css" ],
+        "target": "/build/css/app.min.css"
+      },{
+        "name": "Email total output",
+        "module": "email",
+        "config": "dev",
+        "email_subject": "Logs from quilk build on live",
+        "email_message": "The quilk build for live has just finished, below the log output.",
+        "include_log": true
+      }]
+    }
+  },
+
+  "developers" : {
+    "john" : {
+      "platform"      : "windows",
+      "notifier"      : {
+        "on"   : true,
+        "style": "WindowsBalloon",
+        "time" : 2500,
+        "sound": true
+      },
+      "rsync"         : {
+        "set"           : ["--compress-level=1"]
+        "localPath"     : "/cygdrive/d/test_project/",
+        "remote"        : "www-data@8.9.10.110",
+        "serverPath"    : "/var/vhosts/service-test/"
+      }
+    }
+  },
+
+  "email": {
+    "dev": {
+      "email_to" : ["john@mail.com", "quilk@mrsquilks.com"],
+      "email_from" : {
+        "name": "quilk",
+        "email": "me@quilk.com"
+      },
+      "transport_options": {
+        "host": "smtp.gmail.com",
+        "port": 465,
+        "secure": true,
+        "auth": {
+          "user": "john@gmail.com",
+          "pass": "password"
+        }
+      }
+    },
+    "live": {
+      "email_to" : ["john@mail.com", "quilk@mrsquilks.com"],
+      "email_from" : {
+        "name": "quilk",
+        "email": "me@quilk.com"
+      },
+      "transport_options": {
+        "environment_variables": true,
+        "host": "EMAIL_HOST",
+        "port": "EMAIL_PORT",
+        "secure": "EMAIL_SECURE",
+        "auth": {
+          "user": "EMAIL_USER",
+          "pass": "EMAIL_PASS"
+        }
+      }
+    }
+  }
+}
+
+</code></pre>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/johnc1984/quilk">Quilk</a> is maintained by <a href="https://github.com/johnc1984">johnc1984</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
