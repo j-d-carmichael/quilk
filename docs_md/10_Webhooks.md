@@ -1,4 +1,4 @@
-You can configure a release object to post the quilk output to a url... aka a webhook. Just provide the url and opening message and you good to go.
+You can configure a release object to post the quilk output to a url... aka a webhook. Just provide the url and opening message and you are good to go.
 EG:
 ```
    ...
@@ -10,6 +10,7 @@ EG:
       }]
    ...   
 ```
+
 If you need to pass any basic auth credential to the webhook you will need to add an additional 2 params, EG:
 ```
    ...

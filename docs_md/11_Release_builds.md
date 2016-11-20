@@ -9,4 +9,4 @@ Each block can contain either or all of the following:
 1.  `complete` this is stuff that will be called after the `post` and with zero errors.
 1.  `error` this will be called when there is an error found in the pre, std modules, post or even complete.
 
-Please see the kicthen sink json for a fuller example:  [Example kitchen sink quilk.json](#example-kitchen-sink-quilkjson)
+Please see the kicthen sink json for a fuller example.
