@@ -15,8 +15,13 @@ A lot more under the hood, check the documentation page for more.
 
 ---
 
-### [Full quilk documentation here...](https://johnc1984.github.io/quilk/)
+### Full quilk documentation here 
+(https://johnc1984.github.io/quilk/)
 
 ---
 
 *If anyone fancies helping [evolve](https://github.com/johnc1984/quilk/) quilk give me a shout, many [skilled] hands make light work.*
+
+
+### Last commit
+Extended the sass_std module. You can now add an array of static CSS files that will be added to the SASS generated CSS. To just, just add a numeric array of paths relative to your quilk.json. Full example here: (https://johnc1984.github.io/quilk/Modules_baked_in/sass_std.html)
