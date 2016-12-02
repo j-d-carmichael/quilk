@@ -105,8 +105,13 @@ Below is an example quilk.json file that uses everything that quilk can offer.
   "release_commands_or_modules": {
     "live":{
       "pre": [
-        "echo 'install the dependencies from npm and bower...'",
-        ["bower", "install"]
+        "echo 'install the dependencies from npm and bower..'",
+        {
+          "name": "running bower install",
+          "module": "command_run",
+          "program": "bower",
+          "arguments": ["install", "-s"]
+        },
       ],
       "post": [{
         "name": "minify the js",
