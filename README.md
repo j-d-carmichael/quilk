@@ -5,13 +5,13 @@ Est. 4th Sept. 2016
 
 ---
 
-In brief, quilk is a lightweight module runner that will compile sass, less, browserify files. Concat big client side application js or css. Obfusicate, minify javascript or sqwish css. Ping messages via email or webhooks when a build was successful or a giant failure. Offset your developers working environments to a standardized server for the ultimate team collaboration setup. Use quilk to compile client side code for multiple environments.
+Build files are constant throughout all projects and takes minutes to setup.
 
-And.
+In brief, quilk is a lightweight abstracted module runner that will compile sass, less, babelify, browserify files. Concat big client side application js or css. Obfusicate, minify javascript or sqwish css. Ping messages via email or webhooks when a build was successful or a giant failure. Offset your developers working environments to a standardized server for the ultimate team collaboration setup. Use quilk to compile client side code for multiple environments.
 
-All with a single json file. No more whacky project build files, just a structured json file. 
+To ensure things remain constant between your companies projects, the build file is a standard JSON file.
 
-A lot more under the hood, check the documentation page for more.
+*A lot more under the hood, check the documentation page for more.*
 
 ---
 
@@ -24,7 +24,7 @@ A lot more under the hood, check the documentation page for more.
 
 
 ### Last commit
-New module "command_run". Does what it's name might suggest... it runs commands on the command line... eg "bower install".
+The babelify abstraction module.
 
 ### Next
 Option to use either a quilk.json or a quilk.js file. Writing json is not that fun :/
