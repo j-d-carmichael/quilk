@@ -21,3 +21,7 @@ As quilk grew and was being used in more projects, the configuration nature of q
 
 #### Coming Next
 - Improve the docs. Quilk now offers a lot of out of the box functionality but the documentation is not great, this will be coming it later releases.
+
+
+___
+(these docs have been generated from from .md files by daux)

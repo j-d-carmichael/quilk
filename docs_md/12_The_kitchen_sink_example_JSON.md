@@ -11,6 +11,22 @@ Below is an example quilk.json file that uses everything that quilk can offer.
       "target" : "/public/js/bundle.js"
     },
     {
+      "name": "Just for fun",
+      "module": "babelify",
+      "configure": {
+           "presets": [ "es2015" ],
+           "plugins": [
+               ["babel-root-import", {
+                   "rootPathPrefix": "~",
+                   "rootPathSuffix": "./src/js"
+               }]
+           ]
+       }
+      "debug": false,
+      "entries": "./src/js/index.js",
+      "target": "/build/app.js"
+    },
+    {
       "name" : "Vendor Files",
       "module": "js_fixed",
       "files": [
