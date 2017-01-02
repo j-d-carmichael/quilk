@@ -15,6 +15,8 @@ And the following pluggin
 "babel-root-import"             : "4.1.5",
 ```
 
+If you need any of the other many presets and plugins available, just include them in your local package.json file and quilk will pick them up automatically for you.
+
 **An example quilk.json with configure data**
 
 Note in this example the "configure" block. If you are familiar with babelify you will recognise this is passing the config data in directly into the configure method: https://github.com/babel/babelify#options
