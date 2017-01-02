@@ -5,7 +5,7 @@ Est. 4th Sept. 2016
 
 ---
 
-Build files are constant throughout all projects and takes minutes to setup.
+Quilk build files are constant throughout all projects and take minutes to setup.
 
 In brief, quilk is a lightweight abstracted module runner that will compile sass, less, babelify, browserify files. Concat big client side application js or css. Obfusicate, minify javascript or sqwish css. Ping messages via email or webhooks when a build was successful or a giant failure. Offset your developers working environments to a standardized server for the ultimate team collaboration setup. Use quilk to compile client side code for multiple environments.
 
