@@ -1,34 +1,52 @@
 {
-  "name": "quilk",
-  "version": "1.1.9",
-  "engines" : {
+  "name"         : "quilk",
+  "version"      : "1.1.9",
+  "engines"      : {
     "node" : ">=4.0.0"
   },
-  "description": "SASS LESS JS Concat Browserify Node-Minify and Rsync with one module, no dev dependencies required. Works well on HDD and SSDs.",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description"  : "SASS LESS JS Concat Browserify Babelify Node-Minify and Rsync with one module, no dev dependencies required. Works well on HDD and SSDs.",
+  "scripts"      : {
+    "test" : "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "John Carmichael",
-  "keywords": [
-    "builder", "watcher", "chokidar", "fast", "quilk", "LESS", "sass", "scss", "rsync", "browserify", "compress", "json"
+  "author"       : "John Carmichael",
+  "keywords"     : [
+    "builder",
+    "babelify",
+    "watcher",
+    "chokidar",
+    "fast",
+    "quilk",
+    "less",
+    "sass",
+    "scss",
+    "rsync",
+    "browserify",
+    "compress",
+    "json"
   ],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/johnc1984/quilk"
+  "license"      : "MIT",
+  "repository"   : {
+    "type" : "git",
+    "url"  : "https://github.com/johnc1984/quilk"
   },
-  "bugs": {
-    "url": "https://github.com/johnc1984/quilk/issues"
+  "bugs"         : {
+    "url" : "https://github.com/johnc1984/quilk/issues"
   },
-  "main": "lib/quilk.js",
-  "bin": "./bin/quilk.js",
-  "files": [
+  "main"         : "lib/quilk.js",
+  "bin"          : "./bin/quilk.js",
+  "files"        : [
     "bin",
     "lib"
   ],
-  "homepage": "https://github.com/johnc1984/quilk",
-  "dependencies": {
+  "homepage"     : "https://github.com/johnc1984/quilk",
+  "dependencies" : {
     "ansi-html"                     : "0.0.5",
+    "babel-preset-es2015"           : "6.18.0",
+    "babel-preset-es2016"           : "6.16.0",
+    "babel-preset-es2017"           : "6.16.0",
+    "babel-preset-react"            : "6.16.0",
+    "babel-root-import"             : "4.1.5",
+    "babelify"                      : "7.3.0",
     "browserify"                    : "13.1.1",
     "chokidar"                      : "1.6.1",
     "cli-color"                     : "1.1.0",
@@ -41,11 +59,11 @@
     "less"                          : "2.7.1",
     "lodash"                        : "4.16.6",
     "lodash-deep"                   : "2.0.0",
-    "nodemailer"                    : "2.6.4",
-    "nodemailer-sendmail-transport" : "1.0.0",
     "node-minify"                   : "2.0.0",
     "node-notifier"                 : "4.6.1",
     "node-sass"                     : "3.13.0",
+    "nodemailer"                    : "2.6.4",
+    "nodemailer-sendmail-transport" : "1.0.0",
     "q"                             : "1.4.1",
     "recursive-readdir"             : "2.1.0",
     "request"                       : "2.78.0"
