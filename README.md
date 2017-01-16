@@ -24,7 +24,4 @@ To ensure things remain constant between your companies projects, the build file
 
 
 ### Last commit
-The babelify abstraction module.
-
-### Next
-Option to use either a quilk.json or a quilk.js file. Writing json is not that fun :/
+https://github.com/johnc1984/quilk/issues/1
