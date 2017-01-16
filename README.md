@@ -24,4 +24,4 @@ To ensure things remain constant between your companies projects, the build file
 
 
 ### Last commit
-https://github.com/johnc1984/quilk/issues/1
+The quilk runner no longer halts the entire build process, instead calls the module next in the queue. It does instead only console in big red writing something went wrong.
