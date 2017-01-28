@@ -5,11 +5,11 @@ Est. 4th Sept. 2016
 
 ---
 
-Quilk build files are constant throughout all projects and take minutes to setup.
+Quilk is a developer tool to build your project from a standardised JSON file.
 
-In brief, quilk is a lightweight abstracted module runner that will compile sass, less, babelify, browserify files. Concat big client side application js or css. Obfusicate, minify javascript or sqwish css. Ping messages via email or webhooks when a build was successful or a giant failure. Offset your developers working environments to a standardized server for the ultimate team collaboration setup. Use quilk to compile client side code for multiple environments.
+In brief, quilk is a lightweight abstracted module runner that will compile SASS, find SASS files automatically, LESS, babelify, browserify files. Concat big client side application js & find. Generate CSS from a fixed list. Obfusicate, minify javascript or sqwish css. Ping messages via email or webhooks when a build was successful or a giant failure. Offset your developers working environments to a standardized server for the ultimate team collaboration setup. Use quilk to compile client side code for multiple environments.
 
-To ensure things remain constant between your companies projects, the build file is a standard JSON file.
+To ensure things remain constant between your companies projects, the build file is a standard JSON file. There is of course the ability to write your own modules for quilk, either publicy hosted of privately nested in your project repo.
 
 *A lot more under the hood, check the documentation page for more.*
 
@@ -24,8 +24,4 @@ To ensure things remain constant between your companies projects, the build file
 
 
 ### Last commit
-1 - The quilk runner no longer halts the entire build process, instead calls the module next in the queue. It does instead only console in big red writing something went wrong.
-
-2 - Fixed an annoying bug, you can now change the quilk json file while the watcher is watching without having to restart quilk.
-
-3 - The sass_find module has been optimized a little. 
+1 - Rework of the sass_find module. Works with in-memory files opposed to temporary physical files. As an exmaple, a project with 67 .scss files with a total output .css file size of approx 300Kb uncompressed with outputStyle as expanded, the total build time with an SSD is 104ms / 110ms with verbose loggin turned on. [https://jdcrecur.github.io/quilk/Modules_baked_in/sass_find.html](https://jdcrecur.github.io/quilk/Modules_baked_in/sass_find.html)
