@@ -16,11 +16,11 @@ To ensure things remain constant between your companies projects, the build file
 ---
 
 ### Full quilk documentation here 
-[https://johnc1984.github.io/quilk/](https://johnc1984.github.io/quilk/)
+[https://jdcrecur.github.io/quilk/](https://jdcrecur.github.io/quilk/)
 
 ---
 
-*If anyone fancies helping [evolve](https://github.com/johnc1984/quilk/) quilk give me a shout, many [skilled] hands make light work.*
+*If anyone fancies helping [evolve](https://github.com/jdcrecur/quilk/) quilk give me a shout, many [skilled] hands make light work.*
 
 
 ### Last commit
