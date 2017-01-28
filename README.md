@@ -27,3 +27,5 @@ To ensure things remain constant between your companies projects, the build file
 1 - The quilk runner no longer halts the entire build process, instead calls the module next in the queue. It does instead only console in big red writing something went wrong.
 
 2 - Fixed an annoying bug, you can now change the quilk json file while the watcher is watching without having to restart quilk.
+
+3 - The sass_find module has been optimized a little. 
