@@ -24,4 +24,4 @@ To ensure things remain constant between your companies projects, the build file
 
 
 ### Last commit
-1 - Rework of the sass_find module. Works with in-memory files opposed to temporary physical files. As an exmaple, a project with 67 .scss files with a total output .css file size of approx 300Kb uncompressed with outputStyle as expanded, the total build time with an SSD is 104ms / 110ms with verbose loggin turned on. [https://jdcrecur.github.io/quilk/Modules_baked_in/sass_find.html](https://jdcrecur.github.io/quilk/Modules_baked_in/sass_find.html)
+1 - Tweak to the js_find module. The module sorts the files found naturally but ignores the file ext. This allows myproj.forms.js to appear before myproj.forms.act.js in the output file. This is sometimes important for object orientated javascript projects.
