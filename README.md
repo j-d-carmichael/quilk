@@ -24,4 +24,14 @@ To ensure things remain constant between your companies projects, the build file
 
 
 ### Last commit
-1 - Tweak to the js_find module. The module sorts the files found naturally but ignores the file ext. This allows myproj.forms.js to appear before myproj.forms.act.js in the output file. This is sometimes important for object orientated javascript projects.
+The notifier is now either on, off, or on for up to varying levels, configurable from the json, eg:
+```
+"notifier" : {
+    "on_for_level": 10,
+    "style": "NotifySend",
+    "time" : 2500
+},
+```
+The 'on_for_level' setting can be 0 -> 10. Where 10 is only high level items such as erors in the build. 5 is general notifications such as quilk starting and watching etc.
+
+To be told only when quilk build has finished and errors, choose level 9.
