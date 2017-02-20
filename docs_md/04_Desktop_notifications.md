@@ -30,3 +30,39 @@ The notifier object for the current quilk developer will, along with the title a
     }
   },
 ```
+
+#### Notification levels
+You can set levels in your json, it can be a bit much in some builds to be told of literally everything via a desktop notification while conversally being a little too little with none.
+
+To use levels the json might look like:
+```
+  "developers" : {
+    "john" : {
+      "platform" : "linux",
+      "notifier" : {
+        "on_for_level": 10,
+        "style": "NotifySend",
+        "time" : 2500
+      },
+```      
+
+The levels are currently:
+- 10 - Only errors
+- 9 - Build finished + above
+- 8 
+- 7 
+- 6 
+- 5 - Watching and read + above
+- 4
+- 3
+- 2
+- 1
+- 0
+
+
+
+
+
+
+
+

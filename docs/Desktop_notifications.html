@@ -76,7 +76,7 @@
     <div class="Page__header">
         <h1><a href="Desktop_notifications.html">Desktop notifications</a></h1>
                 <span style="float: left; font-size: 10px; color: gray;">
-            Monday, January 2, 2017 3:01 PM        </span>
+            Monday, February 20, 2017 8:15 AM        </span>
                     </div>
 
 
@@ -113,6 +113,32 @@
     }
   },
 </code></pre>
+<h4 id="page_Notification_levels">Notification levels</h4>
+<p>You can set levels in your json, it can be a bit much in some builds to be told of literally everything via a desktop notification while conversally being a little too little with none.</p>
+<p>To use levels the json might look like:</p>
+<pre><code>  &quot;developers&quot; : {
+    &quot;john&quot; : {
+      &quot;platform&quot; : &quot;linux&quot;,
+      &quot;notifier&quot; : {
+        &quot;on_for_level&quot;: 10,
+        &quot;style&quot;: &quot;NotifySend&quot;,
+        &quot;time&quot; : 2500
+      },
+</code></pre>
+<p>The levels are currently:</p>
+<ul>
+<li>10 - Only errors</li>
+<li>9 - Build finished + above</li>
+<li>8</li>
+<li>7</li>
+<li>6</li>
+<li>5 - Watching and read + above</li>
+<li>4</li>
+<li>3</li>
+<li>2</li>
+<li>1</li>
+<li>0</li>
+</ul>
     </div>
 
         <nav>
