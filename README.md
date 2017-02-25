@@ -24,11 +24,12 @@ To ensure things remain constant between your companies projects, the build file
 
 
 ### Latest commits
+1.  Updated a few dependecies, including node-sass... they somehow made appear to made it even faster!!
 1.  You can now use a json file or js module returning a js object representation of the json file. Using a js module opposed to a json opens to doors to nice comments... but also dynamically generating the output.
 Here are the docs for json or module: [https://jdcrecur.github.io/quilk/JSON-or-Module.html](https://jdcrecur.github.io/quilk/JSON-or-Module.html)
 
 
-2.  The notifier is now either on, off, or on for up to varying levels, configurable from the json, eg:
+1.  The notifier is now either on, off, or on for up to varying levels, configurable from the json, eg:
 ```
 "notifier" : {
     "on_for_level": 10,
