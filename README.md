@@ -24,6 +24,10 @@ To ensure things remain constant between your companies projects, the build file
 
 
 ### Last commit
+You can now use a json file or js module returning a js object representation of the json file. Using a js module opposed to a json opens to doors to nice comments... but also dynamically generating the output.
+Here are the docs for json or module: [https://jdcrecur.github.io/quilk/json-or-module.html](https://jdcrecur.github.io/quilk/json-or-module.html)
+
+
 The notifier is now either on, off, or on for up to varying levels, configurable from the json, eg:
 ```
 "notifier" : {
@@ -32,6 +36,5 @@ The notifier is now either on, off, or on for up to varying levels, configurable
     "time" : 2500
 },
 ```
-The 'on_for_level' setting can be 0 -> 10. Where 10 is only high level items such as erors in the build. 5 is general notifications such as quilk starting and watching etc.
-
-To be told only when quilk build has finished and errors, choose level 9.
+EG: To be told only when quilk build has finished and errors, choose level 9.
+Here are the docs for notifications: [https://jdcrecur.github.io/quilk/Desktop_notifications.html](https://jdcrecur.github.io/quilk/Desktop_notifications.html)
