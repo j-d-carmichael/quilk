@@ -11,7 +11,7 @@ quilk --help
 
 ### Generating a new quilk.json or quilk.js file
 Decide if you want your quilk config delivered via a json file or js file via module.exports.
-[See here for more on choosing json or modules](https://jdcrecur.github.io/quilk/04_JSON-or-Module.html)
+[See here for more on choosing json or modules](https://jdcrecur.github.io/quilk/JSON-or-Module.html)
 
 The `quilk.js(on)` is, as you might have already guessed, where all the quilk magic is configured. Create your base `quilk.json` file by running from the root of your project (or copying from another project):
 ```
