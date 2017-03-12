@@ -24,7 +24,8 @@ To ensure things remain constant between your companies projects, the build file
 
 
 ### Latest commits
-1.  Updated a few dependecies, including node-sass... they somehow made appear to made it even faster!!
+1.  Updated a few dependecies, including node-sass... they somehow made it even faster!!
+1.  Bug with chokidar resolving the full file path fixed in the js_fixed module for watchers.
 1.  You can now use a json file or js module returning a js object representation of the json file. Using a js module opposed to a json opens to doors to nice comments... but also dynamically generating the output.
 Here are the docs for json or module: [https://jdcrecur.github.io/quilk/JSON-or-Module.html](https://jdcrecur.github.io/quilk/JSON-or-Module.html)
 
