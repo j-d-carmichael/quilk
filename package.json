@@ -67,6 +67,7 @@
     "nodemailer-sendmail-transport": "1.0.0",
     "q": "1.4.1",
     "recursive-readdir": "2.1.0",
-    "request": "2.78.0"
+    "request": "2.78.0",
+    "strip-comments": "^0.4.4"
   }
 }
