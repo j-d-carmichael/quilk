@@ -39,9 +39,7 @@ Most of the standard jobs can be covered with a single quilk file and the baked 
 
 
 ### Latest commits
-**Breaking changes**:
-* The bablify module within quilk has been removed as it is now available within the node-minify module.
-* That's about it, this breaking change meant I had to increment up to version 2.
+To get this working (for now) you must install node-minify to your project.
 
 1.  Example use of babili. In this case the babel config is coming from a .babelrc file.
 ```
