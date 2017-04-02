@@ -18,7 +18,7 @@ In brief, quilk is a lightweight abstracted module runner that will:
 * **Concat** big client side js from a fixed list or instruct quilk to **find** js files in a folder.
 * **Babelify** your code (requires you to install locally your preferred preset).
 * **Rsync** files locally to a development server, ideal for ensuring each dev has the same environment, and saves so much time!
-* **Obfusicate, minify** javascript or css using the **node-minify** module.
+* **Obfusicate, minify** javascript or css using the **node-minify** module check out their docs for more on node-minify.
 * **Strip out** comments from js code.
 * Configure **independent** blocks for developers.
 * **Desktop notifications** on or off or on for varying levels.
@@ -39,8 +39,8 @@ Most of the standard jobs can be covered with a single quilk file and the baked 
 
 
 ### Latest commits
-To get this working (for now) you must install node-minify to your project.
 
+babili from node minify works (To get this working (for now) you must install node-minify to your project & the preset you need.):
 1.  Example use of babili. In this case the babel config is coming from a .babelrc file.
 ```
 {
@@ -55,17 +55,39 @@ To get this working (for now) you must install node-minify to your project.
 }
 ```
 
-In the above example the .babelrc file lived at the same level as the quilk file and looked like:
+The babelify module has had some attention. In fact there are now 3 modules:
+1.  babelify_vendor, babelify_app and babelify. As you might have guessed the vendor version is for vendor files, the app for app and the plain old babelify to include it all in one file. Here are a few examples:
 ```
 {
-    "presets": [ "es2015" ]
+    name: 'Vendor Files babelify',
+    module: 'babelify_vendor',
+    working_directory: '/src/browser_app', /* <<< this is optional. If not present then it works from the same as directory as the quilk js */
+    npm_modules: [
+        "bootstrap-sass",
+        "d3",
+        "jquery",
+        "lodash",
+        "promise-polyfill",
+        "renderjson"
+    ],
+    npm_modules: "package.json", /* <<< either instruct the module to read the package.json or give it a list of modules. */
+    configure: {
+        babelrc: '.babelrc'
+    },
+    target: '/public/build/js/vendor.js'
 }
 ```
 
-The package.json file then also included the preset by running `npm install babel-preset-es2015 --save`:
 ```
-...
-  "dependencies": {
-    "babel-preset-es2015": "^6.24.0",
-...
+{
+    name: 'Vendor Files babelify',
+    module: 'babelify_app',
+    working_directory: '/src/browser_app', /* <<< this is optional. If not present then it works from the same as directory as the quilk js */
+    entries: "/js/app.js",
+    npm_modules: "package.json", /* <<< either instruct the module to read the package.json or give it a list of modules like above */
+    configure: {
+        babelrc: '.babelrc'
+    },
+    target: '/public/build/js/app.js'
+}
 ```
