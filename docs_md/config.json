@@ -1,6 +1,6 @@
 {
   "title": "quilk",
-  "tagline": "The easiest way to build your application client side code!",
+  "tagline": "The easy way to build your application client side code.",
   "author": "John Carmichael",
   "image": "app.png",
   "live": {
@@ -12,12 +12,12 @@
     "breadcrumb_separator": "Chevrons",
     "toggle_code": true,
     "date_modified": true,
-    "float": true,
+    "float": false,
     "inherit_index": true,
-    "repo": "johnc1984/quilk",
+    "repo": "jdcrecur/quilk",
     "links": {
       "NPM": "https://npmjs.com/package/quilk",
-      "GitHub Repo": "https://github.com/johnc1984/quilk"
+      "GitHub Repo": "https://github.com/jdcrecur/quilk"
     }
   }
 }
