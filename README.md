@@ -52,8 +52,8 @@ Most of the standard jobs can be covered with a single quilk file and the baked 
     options: {
         babelrc: '.babelrc'
     },
-    input:  "/public/build/js/app.js",
-    target: "/src/browser_app/js/app.js"
+    input:  "/src/browser_app/js/app.js",
+    target: "/public/build/js/app.js"
 }
 ```
 
