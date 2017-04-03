@@ -43,6 +43,8 @@ Most of the standard jobs can be covered with a single quilk file and the baked 
 
 1. The babelify_vendor module now knows when and when not to rebuild during quilk watch.
 1. More in the readme.
+1. General code inspection cleanup.
+1. Added a small timeout in the copy module. When watching on machines with slower HDD the empty would call the callback but the HDD had not actually finished. The timeout appears to have fixed this.
 
 ### Tips
 
