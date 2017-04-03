@@ -12,6 +12,8 @@ There are 3 main ways you can use this module:
     name: 'Vendor Files babelify',
     module: 'babelify_vendor',
     npm_modules: "package.json",
+    extensions: ['.js'],
+    debug: true,
     configure: {
         babelrc: '.babelrc'
     },
@@ -31,6 +33,8 @@ By default anything you add to the 'bundleExclude' directive of the package.json
         "jquery",
         "promise-polyfill",
     ],
+    extensions: ['.js'],
+    debug: true,
     configure: {
         babelrc: '.babelrc'
     },
@@ -47,6 +51,8 @@ This will quite simply grab all the modules you explicitly declare in the numeri
     working_directory: '/src/browser_app',
     module: 'babelify_app',
     entries: "/js/app.js",
+    extensions: ['.js'],
+    debug: true,
     npm_modules: "package.json",
     configure: {
         babelrc: '.babelrc'
@@ -56,3 +62,9 @@ This will quite simply grab all the modules you explicitly declare in the numeri
 ```
 
 In the above example, quilk will load the modules from `/src/browser_app` within the project.
+
+
+**Tips** 
+* Set debug to false in your release block.
+* The default configure is just bablify with no preset.
+* The default extensions is `["js"]`.
