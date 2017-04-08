@@ -41,6 +41,7 @@ Most of the standard jobs can be covered with a single quilk file and the baked 
 
 ### Latest commits
 
+1. The rsync module has a new command. Pass in `rsyncPull` as a command line arg and the module will pull all the contents from the target to the local.
 1. The babelify_vendor module now knows when and when not to rebuild during quilk watch.
 1. More in the readme.
 1. General code inspection cleanup.
