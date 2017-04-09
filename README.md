@@ -8,9 +8,9 @@ Est. 4th Sept. 2016
 
 ---
 
-Quilk is a developer tool to build your project from a standardised JSON file, or a common js module. Both without requiring a long list of dependencies, just a single install of quilk.
+Quilk is a developer tool to build your project from a standardised JSON file, or a common js module. Both without requiring a long list of dependencies, just a single install globally of quilk.
 
-In brief, quilk is a lightweight abstracted module runner, pre-baked modules in quilk can do the following:
+In brief, quilk is a lightweight module runner, pre-baked modules in quilk can do the following:
 
 * Compile [**SASS**](https://www.npmjs.com/package/node-sass) with node-sass, either by **finding scss** files or by giving it simple entry point.
 * Compile [**LESS**](https://www.npmjs.com/package/less) (no find module has been written for LESS files yet).
@@ -40,7 +40,7 @@ Most of the standard jobs can be covered with a single quilk file and the baked 
 
 
 ### Latest commits
-
+1. Updated node-minify to 2.0.4 which fixes the babili compressor bug.
 1. The rsync module has a new command. Pass in `rsyncPull` as a command line arg and the module will pull all the contents from the target to the local.
 1. The babelify_vendor module now knows when and when not to rebuild during quilk watch.
 1. More in the readme.
@@ -50,5 +50,4 @@ Most of the standard jobs can be covered with a single quilk file and the baked 
 ### Tips
 
 1. All use of babelify or the babili compressor within the node-minify module require you to install your presets locally.
-1. The babili compressor within the node-minify npm is great, but if you use it in quilk.. for now.. you must install it locally, else there are some path issues.
-1. The options directive for node_minify will be passed right into the actual node-minify npm.
+1. The options directive for node_minify module in quilk will be passed right into the actual node-minify package.
