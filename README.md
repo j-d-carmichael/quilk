@@ -40,12 +40,42 @@ Most of the standard jobs can be covered with a single quilk file and the baked 
 
 
 ### Latest commits
-1. Updated node-minify to 2.0.4 which fixes the babili compressor bug.
-1. The rsync module has a new command. Pass in `rsyncPull` as a command line arg and the module will pull all the contents from the target to the local.
-1. The babelify_vendor module now knows when and when not to rebuild during quilk watch.
-1. More in the readme.
-1. General code inspection cleanup.
-1. Added a small timeout in the copy module. When watching on machines with slower HDD the empty would call the callback but the HDD had not actually finished. The timeout appears to have fixed this.
+1. you can now control Chokidar, the default options are:
+```
+{
+    persistent: true,
+    followSymlinks: false,
+    alwaysStat: true,
+    awaitWriteFinish: true,
+    atomic: 200
+}
+```
+You can now take control of this by adding a `chokidar_options` in the quilk file. 
+eg:
+```
+{
+    followSymlinks: true,
+    depth: 120
+}
+```
+Which results in:
+```
+{
+    persistent: true,
+    followSymlinks: true,
+    alwaysStat: true,
+    awaitWriteFinish: true,
+    atomic: 200,
+    depth: 120
+}
+```
+See https://www.npmjs.com/package/chokidar for more options available.
+
+
+2. Updated node-minify to 2.0.4 which fixes the babili compressor bug.
+3. The rsync module has a new command. Pass in `rsyncPull` as a command line arg and the module will pull all the contents from the target to the local.
+4. The babelify_vendor module now knows when and when not to rebuild during quilk watch.
+5. More in the readme.
 
 ### Tips
 
