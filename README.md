@@ -40,6 +40,7 @@ Most of the standard jobs can be covered with a single quilk file and the baked 
 
 
 ### Latest commits
+1. New directive for the sass find module, `include_last`. The same as the include first directive, but instead includes the array of files at the end of the file.
 1. you can now control Chokidar, the default options are:
 ```
 {
@@ -75,7 +76,6 @@ See https://www.npmjs.com/package/chokidar for more options available.
 2. Updated node-minify to 2.0.4 which fixes the babili compressor bug.
 3. The rsync module has a new command. Pass in `rsyncPull` as a command line arg and the module will pull all the contents from the target to the local.
 4. The babelify_vendor module now knows when and when not to rebuild during quilk watch.
-5. More in the readme.
 
 ### Tips
 
