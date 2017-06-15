@@ -29,12 +29,27 @@ Most of the standard jobs can be covered with a single quilk file and the baked 
 
 ---
 
-### Documentation here 
+## Documentation here 
 [https://jdcrecur.github.io/quilk/](https://jdcrecur.github.io/quilk/)
 
 ---
 
 *If anyone fancies helping [evolve](https://github.com/jdcrecur/quilk/) quilk give me a shout, many [skilled] hands make light work.*
+
+## Running a quilk file
+`quilk` 
+
+or 
+
+`quilk watch` 
+
+or 
+
+`quilk watch d=john` 
+
+or to just run a select group of modules from a quilk file 
+
+`quilk watch d=john module=sass_std module=rsync`
 
 ### Example quilk file
 ```
@@ -130,7 +145,7 @@ module.exports = {
         sound: true
       }
     },
-    carmichael: {
+    john: {
       platform: 'windows',
       notifier: {
         on: false
