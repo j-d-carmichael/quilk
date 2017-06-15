@@ -1,10 +1,10 @@
 {
   "name": "quilk",
-  "version": "2.0.13",
+  "version": "2.1.0",
   "engines": {
     "node": ">=6.0.0"
   },
-  "description": "Quilk is a developer tool to build your project from a standardised JSON file, or a common js module. ",
+  "description": "quilk is an easy to understand client side file builder from in-built CommonJS modules for es6, es5, SASS, LESS and a whole bunch more",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -43,7 +43,7 @@
     "ansi-html": "0.0.5",
     "babelify": "^7.3.0",
     "browserify": "13.1.1",
-    "chokidar": "1.6.1",
+    "chokidar": "1.7.0",
     "cli-color": "1.1.0",
     "cli-spinner": "0.2.5",
     "concat-files": "0.1.0",
