@@ -2,7 +2,7 @@ Custom modules allow you to basically do anything you want with whatever you wan
 
 There are two types of custom modules available to use:
 1.  A 3rd party npm package installed to you project in the usual node_modules folder, included in the package.json file as a dependency. 
-2.  Your own project custom module kept in a specific folder within your project titled `quilk_modules`.
+2.  Your own project custom module kept in a specific folder within your project titled `quilk_modules` (You may change this location with the `custom_module_path` directive in the quilk file).
 
 For a module to work with the quilk runner you just need to expose a function called `run`. If you are writing a 3rd party module for others to use then the main file of the npm package should export an object with a `run` function at the top level. For example if the main file of your 3rd party npm package was `index.js` then this would have to contain something like this (the module would look exactly the same if it was a custom project module in the `quilk_modules` of your project):
 ```
