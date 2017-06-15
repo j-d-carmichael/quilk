@@ -29,16 +29,32 @@ Most of the standard jobs can be covered with a single quilk file and the baked 
 
 ---
 
-### Documentation here 
+## Documentation here 
 [https://jdcrecur.github.io/quilk/](https://jdcrecur.github.io/quilk/)
 
 ---
 
 *If anyone fancies helping [evolve](https://github.com/jdcrecur/quilk/) quilk give me a shout, many [skilled] hands make light work.*
 
+## Running a quilk file
+`quilk` 
+
+or 
+
+`quilk watch` 
+
+or 
+
+`quilk watch d=john` 
+
+or to just run a select group of modules from a quilk file 
+
+`quilk watch d=john module=sass_std module=rsync`
+
 ### Example quilk file
 ```
 module.exports = {
+  // The modules this quilk file should run
   modules: [
     {
       name: '(custom project specific module) Preapre the js config files based on the .env file',
@@ -81,6 +97,10 @@ module.exports = {
     }
   ],
 
+  // The projects custom quilk modules location
+  custom_module_path: 'quilk_modules',
+
+  // Watcher don't run the modules when files change here...
   dont_watch: [
     '.git/',
     'node_modules',
@@ -90,10 +110,12 @@ module.exports = {
     'public/js'
   ],
 
+  // The watcher options. See https://www.npmjs.com/package/chokidar for all the settings available
   chokidar_options: {
     atomic: 100
   },
 
+  // Additional modules to run for live or staging, eg node_minify for js and css
   release_commands_or_modules: {
     prod: {
       post: [{
@@ -111,7 +133,8 @@ module.exports = {
       }]
     }
   },
-
+  
+  // The developers own custom settings
   developers: {
     default: {
       platform: 'windows',
@@ -122,7 +145,7 @@ module.exports = {
         sound: true
       }
     },
-    carmichael: {
+    john: {
       platform: 'windows',
       notifier: {
         on: false
@@ -141,4 +164,4 @@ module.exports = {
 ### Tips
 
 1. All use of babelify or the babili compressor within the node-minify module require you to install your presets locally.
-1. The options directive for node_minify module in quilk will be passed right into the actual node-minify package.
+1. Most in-built modules will pass in the options from the quilk file directly to the npm package they are an abstraction for, so for full options please check the individual npm packages.
