@@ -71,7 +71,7 @@
     <div class="Page__header">
         <h1><a href="Watcher.html">Watcher</a></h1>
                 <span style="float: left; font-size: 10px; color: gray;">
-            Monday, April 3, 2017 1:35 AM        </span>
+            Thursday, June 15, 2017 8:27 AM        </span>
                     </div>
 
 
@@ -79,6 +79,14 @@
         <p><strong>Dont watch</strong></p>
 <p>When using the watch option ensure that you instruct which file to not watch, <code>dont_watch</code>.</p>
 <p>The <code>dont_watch</code> option is quilk.json is passed to chokidar as directories and exact files to not trigger on. EG should you build a css file from sass you don't want to trigger chokidar to run all the modules again when it spots a change in the said css file ie ending up in an infinite loop.</p>
+<p>The watcher is essentially an abstraction to <a href="https://www.npmjs.com/package/chokidar" class="external">Chokidar</a>, as with most other built in modules in quilk you are able to pass in native options to control the watcher.</p>
+<p>Add this block to your quilk file, see <a href="https://www.npmjs.com/package/chokidar" class="external">Chokidar</a> for all options available:</p>
+<pre><code>chokidar_options: {
+    atomic: 50,
+    followSymlinks: true,
+    depth: 120
+}
+</code></pre>
     </div>
 
         <nav>

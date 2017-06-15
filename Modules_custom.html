@@ -71,7 +71,7 @@
     <div class="Page__header">
         <h1><a href="Modules_custom.html">Modules custom</a></h1>
                 <span style="float: left; font-size: 10px; color: gray;">
-            Monday, April 3, 2017 1:35 AM        </span>
+            Thursday, June 15, 2017 8:27 AM        </span>
                     </div>
 
 
@@ -80,7 +80,7 @@
 <p>There are two types of custom modules available to use:</p>
 <ol>
 <li>A 3rd party npm package installed to you project in the usual node_modules folder, included in the package.json file as a dependency.</li>
-<li>Your own project custom module kept in a specific folder within your project titled <code>quilk_modules</code>.</li>
+<li>Your own project custom module kept in a specific folder within your project titled <code>quilk_modules</code> (You may change this location with the <code>custom_module_path</code> directive in the quilk file).</li>
 </ol>
 <p>For a module to work with the quilk runner you just need to expose a function called <code>run</code>. If you are writing a 3rd party module for others to use then the main file of the npm package should export an object with a <code>run</code> function at the top level. For example if the main file of your 3rd party npm package was <code>index.js</code> then this would have to contain something like this (the module would look exactly the same if it was a custom project module in the <code>quilk_modules</code> of your project):</p>
 <pre><code>module.export = { 
