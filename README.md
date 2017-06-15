@@ -39,6 +39,7 @@ Most of the standard jobs can be covered with a single quilk file and the baked 
 ### Example quilk file
 ```
 module.exports = {
+  // The modules this quilk file should run
   modules: [
     {
       name: '(custom project specific module) Preapre the js config files based on the .env file',
@@ -81,6 +82,10 @@ module.exports = {
     }
   ],
 
+  // The projects custom quilk modules location
+  custom_module_path: 'quilk_modules',
+
+  // Watcher don't run the modules when files change here...
   dont_watch: [
     '.git/',
     'node_modules',
@@ -90,10 +95,12 @@ module.exports = {
     'public/js'
   ],
 
+  // The watcher options. See https://www.npmjs.com/package/chokidar for all the settings available
   chokidar_options: {
     atomic: 100
   },
 
+  // Additional modules to run for live or staging, eg node_minify for js and css
   release_commands_or_modules: {
     prod: {
       post: [{
@@ -111,7 +118,8 @@ module.exports = {
       }]
     }
   },
-
+  
+  // The developers own custom settings
   developers: {
     default: {
       platform: 'windows',
@@ -141,4 +149,4 @@ module.exports = {
 ### Tips
 
 1. All use of babelify or the babili compressor within the node-minify module require you to install your presets locally.
-1. The options directive for node_minify module in quilk will be passed right into the actual node-minify package.
+1. Most in-built modules will pass in the options from the quilk file directly to the npm package they are an abstraction for, so for full options please check the individual npm packages.
