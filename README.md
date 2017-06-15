@@ -8,17 +8,15 @@ Est. 4th Sept. 2016
 
 ---
 
-Quilk is a developer tool to build your project from a standardised JSON file, or a common js module. Both without requiring a long list of dependencies, just a single install globally of quilk.
+In brief, quilk is a lightweight standardised module runner. Pre-baked modules in quilk can do the following:
 
-In brief, quilk is a lightweight module runner, pre-baked modules in quilk can do the following:
-
+* **Rsync** files locally to a development server, ideal for ensuring each dev has the same environment and doesn't need to spend time managing a virtual box or its CPU overheads.
 * Compile [**SASS**](https://www.npmjs.com/package/node-sass) with node-sass, either by **finding scss** files or by giving it simple entry point.
 * Compile [**LESS**](https://www.npmjs.com/package/less) (no find module has been written for LESS files yet).
 * Generate a single CSS file from a **fixed list of CSS** files.
+* Compile JS code with [**Babelify**](https://www.npmjs.com/package/babelify) either in one big file or broken into vendor.js and app.js with the babelify_app and babelify_vendor module.
+* [**Browserify**](https://www.npmjs.com/package/browserify) your backend modules to share with the front end.
 * [**Concat**](https://www.npmjs.com/package/concat) big client side js from a fixed list or instruct quilk to **find** js files in a folder with concat or node-minify
-* [**Browserify**](https://www.npmjs.com/package/browserify) your backend modules to share with the front end
-* [**Babelify**](https://www.npmjs.com/package/babelify) your code, either in one big file or broken into vendor.js and app.js with the babelify_app and babelify_vendor module.
-* **Rsync** files locally to a development server, ideal for ensuring each dev has the same environment, and saves so much time!
 * **Obfusicate, minify** javascript or css using the [**node-minify**](https://www.npmjs.com/package/node-minify) module check out their docs for more on node-minify.
 * **Strip out** comments from js code.
 * Configure **independent** blocks for developers.
@@ -38,44 +36,107 @@ Most of the standard jobs can be covered with a single quilk file and the baked 
 
 *If anyone fancies helping [evolve](https://github.com/jdcrecur/quilk/) quilk give me a shout, many [skilled] hands make light work.*
 
-
-### Latest commits
-1. New directive for the sass find module, `include_last`. The same as the include first directive, but instead includes the array of files at the end of the file.
-1. you can now control Chokidar, the default options are:
+### Example quilk file
 ```
-{
-    persistent: true,
-    followSymlinks: false,
-    alwaysStat: true,
-    awaitWriteFinish: true,
-    atomic: 200
+module.exports = {
+  modules: [
+    {
+      name: '(custom project specific module) Preapre the js config files based on the .env file',
+      module: 'prepareJSConfigFiles'
+    },
+    {
+      name: 'App file',
+      module: 'babelify',
+      configure: {
+        babelrc: '.babelrc'
+      },
+      extensions: ['.js'],
+      debug: true,
+      entries: 'resources/assets/js/app.js',
+      target: '/public/js/app.js'
+    },
+    {
+      name: 'App CSS',
+      module: 'sass_std',
+      outputStyle: 'expanded',
+      sourceComments: true,
+      input_path: 'resources/assets/sass/app.scss',
+      target: '/public/css/app.css'
+    }
+    {
+      name: 'Rsync it',
+      module: 'rsync',
+      ignore: {
+        windows: [],
+        mac: [],
+        linux: [],
+        global: [
+          '.git/*',
+          '.idea/*',
+          'storage/app/*',
+          'storage/logs/*',
+          'node_modules'
+        ]
+      }
+    }
+  ],
+
+  dont_watch: [
+    '.git/',
+    'node_modules',
+    'vendor',
+    'public/css',
+    'public/fonts',
+    'public/js'
+  ],
+
+  chokidar_options: {
+    atomic: 100
+  },
+
+  release_commands_or_modules: {
+    prod: {
+      post: [{
+        name: 'minify the vendor js',
+        module: 'node_minify',
+        type: 'uglifyjs',
+        input: ['/public/js/app.js'],
+        target: '/public/js/app.js'
+      }, {
+        name: 'minify the css',
+        module: 'node_minify',
+        type: 'sqwish',
+        input: ['/public/css/app.css'],
+        target: '/public/css/app.css'
+      }]
+    }
+  },
+
+  developers: {
+    default: {
+      platform: 'windows',
+      notifier: {
+        on: false,
+        style: 'WindowsBalloon',
+        time: 5000,
+        sound: true
+      }
+    },
+    carmichael: {
+      platform: 'windows',
+      notifier: {
+        on: false
+      },
+      rsync: {
+        localPath: '/cygdrive/c/code//project-x/',
+        remote: 'www-data@myserver',
+        serverPath: '/var/www/vhosts/project-x/'
+      }
+    }
+  }
 }
 ```
-You can now take control of this by adding a `chokidar_options` in the quilk file. 
-eg:
-```
-{
-    followSymlinks: true,
-    depth: 120
-}
-```
-Which results in:
-```
-{
-    persistent: true,
-    followSymlinks: true,
-    alwaysStat: true,
-    awaitWriteFinish: true,
-    atomic: 200,
-    depth: 120
-}
-```
-See https://www.npmjs.com/package/chokidar for more options available.
 
-
-2. Updated node-minify to 2.0.4 which fixes the babili compressor bug.
-3. The rsync module has a new command. Pass in `rsyncPull` as a command line arg and the module will pull all the contents from the target to the local.
-4. The babelify_vendor module now knows when and when not to rebuild during quilk watch.
 
 ### Tips
 
