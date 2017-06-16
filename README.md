@@ -23,7 +23,7 @@ In brief, quilk is a lightweight standardised module runner. Pre-baked modules i
 * [**Desktop notifications**](https://www.npmjs.com/package/node-notifier) on or off or on for varying levels.
 * Ping messages via [**email**](https://www.npmjs.com/package/nodemailer) when a built has finished, with success or not.
 * Ping messages via **webhooks** via the [request](https://www.npmjs.com/package/request) npm when a build was successful or a giant failure, eg into a slack channel.
-* **Watch** a local fileset with the watch flag ([**chokidar**](https://www.npmjs.com/package/chokidar) under the hood) to re-run build modules after file changes, doesn't rebuild all, just the affected modules)
+* **Watch** a local fileset with the watch flag ([**chokidar**](https://www.npmjs.com/package/chokidar). Control how the watcher behaves by passing in the chokidar_options from the quilk file globally or even developer by developer.
 
 Most of the standard jobs can be covered with a single quilk file and the baked in modules into quilk, however there is of course the ability to write your own modules for quilk, either publicy hosted of privately nested in your project repo.
 
@@ -112,7 +112,7 @@ module.exports = {
 
   // The watcher options. See https://www.npmjs.com/package/chokidar for all the settings available
   chokidar_options: {
-    atomic: 100
+    awaitWriteFinish: false
   },
 
   // Additional modules to run for live or staging, eg node_minify for js and css
@@ -150,6 +150,9 @@ module.exports = {
       notifier: {
         on: false
       },
+      chokidar_options: {
+        awaitWriteFinish: false
+      },
       rsync: {
         localPath: '/cygdrive/c/code//project-x/',
         remote: 'www-data@myserver',
@@ -165,3 +168,4 @@ module.exports = {
 
 1. All use of babelify or the babili compressor within the node-minify module require you to install your presets locally.
 1. Most in-built modules will pass in the options from the quilk file directly to the npm package they are an abstraction for, so for full options please check the individual npm packages.
+1. Take control of the chokidar watcher options for all developers, or developer by developer... each to their own.
