@@ -114,6 +114,9 @@ module.exports = {
   chokidar_options: {
     awaitWriteFinish: false
   },
+  
+  // Stop the watcher being triggered multiple times by other watchers, this grace time defaults to 500.
+  watcher_wait_between_changes: 500,
 
   // Additional modules to run for live or staging, eg node_minify for js and css
   release_commands_or_modules: {
@@ -151,7 +154,8 @@ module.exports = {
         on: false
       },
       chokidar_options: {
-        awaitWriteFinish: false
+        awaitWriteFinish: true,
+        atomic: 50
       },
       rsync: {
         localPath: '/cygdrive/c/code//project-x/',
@@ -169,3 +173,4 @@ module.exports = {
 1. All use of babelify or the babili compressor within the node-minify module require you to install your presets locally.
 1. Most in-built modules will pass in the options from the quilk file directly to the npm package they are an abstraction for, so for full options please check the individual npm packages.
 1. Take control of the chokidar watcher options for all developers, or developer by developer... each to their own.
+1. Got more than 1 watcher on the go, check out the `watcher_wait_between_changes` flag if you're getting collisions.
