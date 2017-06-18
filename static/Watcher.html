@@ -71,14 +71,15 @@
     <div class="Page__header">
         <h1><a href="Watcher.html">Watcher</a></h1>
                 <span style="float: left; font-size: 10px; color: gray;">
-            Thursday, June 15, 2017 8:27 AM        </span>
+            Sunday, June 18, 2017 1:50 AM        </span>
                     </div>
 
 
     <div class="s-content">
-        <p><strong>Dont watch</strong></p>
+        <h3 id="page_Dont_Watch">Dont Watch</h3>
 <p>When using the watch option ensure that you instruct which file to not watch, <code>dont_watch</code>.</p>
 <p>The <code>dont_watch</code> option is quilk.json is passed to chokidar as directories and exact files to not trigger on. EG should you build a css file from sass you don't want to trigger chokidar to run all the modules again when it spots a change in the said css file ie ending up in an infinite loop.</p>
+<h3 id="page_Chokidar_Controls">Chokidar Controls</h3>
 <p>The watcher is essentially an abstraction to <a href="https://www.npmjs.com/package/chokidar" class="external">Chokidar</a>, as with most other built in modules in quilk you are able to pass in native options to control the watcher.</p>
 <p>Add this block to your quilk file, see <a href="https://www.npmjs.com/package/chokidar" class="external">Chokidar</a> for all options available:</p>
 <pre><code>chokidar_options: {
@@ -86,6 +87,11 @@
     followSymlinks: true,
     depth: 120
 }
+</code></pre>
+<h3 id="page_Race_conditions_with_other_watchers">Race conditions with other watchers</h3>
+<p>You can at times hit races conditions with other watchers, for example using Laravel's Mix with quilk's rsync. To help reduces the multi trigger of the quilk modules there is a default wait time of 500 ms between triggers.</p>
+<p>This default time can be changed with the <code>watcher_wait_between_changes</code> directive in your quilk file to any integer of milli-seconds:</p>
+<pre><code>chokidar_options: 100
 </code></pre>
     </div>
 

@@ -21,4 +21,7 @@ chokidar_options: {
 
 You can at times hit races conditions with other watchers, for example using Laravel's Mix with quilk's rsync. To help reduces the multi trigger of the quilk modules there is a default wait time of 500 ms between triggers.
 
-This default time can be overriden 
+This default time can be changed with the `watcher_wait_between_changes` directive in your quilk file to any integer of milli-seconds:
+```
+chokidar_options: 100
+```
