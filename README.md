@@ -176,4 +176,4 @@ module.exports = {
 1. Got more than 1 watcher on the go, check out the `watcher_wait_between_changes` flag if you're getting collisions.
 
 ### Latest commit
-1. Flushing npm readme cache as there a minor issue with npm.
+1. Dependency updates and attempting to flush npm readme cache again due to recent bugs with NPM. 

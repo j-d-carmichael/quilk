@@ -1,6 +1,6 @@
 {
   "name": "quilk",
-  "version": "2.1.7",
+  "version": "2.1.8",
   "engines": {
     "node": ">=6.0.0"
   },
@@ -42,8 +42,8 @@
   "dependencies": {
     "ansi-html": "0.0.5",
     "babelify": "^7.3.0",
-    "browserify": "13.1.1",
-    "chokidar": "1.7.0",
+    "browserify": "^14.4.0",
+    "chokidar": "^1.7.0",
     "cli-color": "1.1.0",
     "cli-spinner": "0.2.5",
     "concat-files": "0.1.0",
@@ -52,12 +52,12 @@
     "javascript-natural-sort": "0.7.1",
     "jdc-node-cliarg-reader": "1.1.2",
     "jsonfile": "2.4.0",
-    "less": "2.7.1",
-    "lodash": "4.16.6",
+    "less": "^2.7.2",
+    "lodash": "^4.17.4",
     "lodash-deep": "2.0.0",
     "node-minify": "2.0.4",
     "node-notifier": "4.6.1",
-    "node-sass": "^4.5.0",
+    "node-sass": "^4.5.3",
     "nodemailer": "2.6.4",
     "nodemailer-sendmail-transport": "1.0.0",
     "q": "1.4.1",
