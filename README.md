@@ -3,12 +3,16 @@
 [![NPM](https://nodei.co/npm/quilk.png?downloads=true&downloadRank=true)](https://nodei.co/npm/quilk/)
 
 
+### Latest commit
+1. The rsync module now checks for duplicate arguments before running.
+
+
 #quilk
 Est. 4th Sept. 2016
 
 ---
 
-In brief, quilk is a lightweight standardised module runner. Pre-baked modules in quilk can do the following:
+In brief (see the example quilk file before), quilk is a lightweight standardised module runner. Pre-baked modules in quilk can do the following:
 
 * **Rsync** files locally to a development server, ideal for ensuring each dev has the same environment and doesn't need to spend time managing a virtual box or its CPU overheads.
 * Compile [**SASS**](https://www.npmjs.com/package/node-sass) with node-sass, either by **finding scss** files or by giving it simple entry point.
@@ -51,7 +55,7 @@ or to just run a select group of modules from a quilk file
 
 `quilk watch d=john module=sass_std module=rsync`
 
-### Example quilk file
+### Example quilk.js file (a quilk.json file is also valid)
 ```
 module.exports = {
   // The modules this quilk file should run
@@ -82,8 +86,15 @@ module.exports = {
     {
       name: 'Rsync it',
       module: 'rsync',
+      set: [ /* Additional rsync options to be passed */
+        '--copy-links',
+        '--quiet'
+      ],
       ignore: {
-        windows: [],
+        windows: [
+          /* Working on windows for a unix production env makes little sense, as such often certain files should not be synced */
+          'vendor'
+        ],
         mac: [],
         linux: [],
         global: [
@@ -174,6 +185,3 @@ module.exports = {
 1. Most in-built modules will pass in the options from the quilk file directly to the npm package they are an abstraction for, so for full options please check the individual npm packages.
 1. Take control of the chokidar watcher options for all developers, or developer by developer... each to their own.
 1. Got more than 1 watcher on the go, check out the `watcher_wait_between_changes` flag if you're getting collisions.
-
-### Latest commit
-1. Dependency updates and attempting to flush npm readme cache again due to recent bugs with NPM. 
