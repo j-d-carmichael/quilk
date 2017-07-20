@@ -1,8 +1,8 @@
 {
   "name": "quilk",
-  "version": "2.1.9",
+  "version": "2.1.10",
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=4.0.0 <8"
   },
   "description": "quilk is an easy to understand client side file builder from in-built CommonJS modules for es6, es5, SASS, LESS and a whole bunch more",
   "scripts": {
@@ -58,7 +58,7 @@
     "node-minify": "2.0.4",
     "node-notifier": "4.6.1",
     "node-sass": "^4.5.3",
-    "nodemailer": "2.6.4",
+    "nodemailer": "4.0.1",
     "nodemailer-sendmail-transport": "1.0.0",
     "q": "1.4.1",
     "recursive-readdir": "2.1.1",
