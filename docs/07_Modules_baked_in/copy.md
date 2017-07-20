@@ -5,19 +5,19 @@ This module does as you might expect, it copies files from location to another. 
 The module only needs an input and output:
 
 ```
-  { name: 'Copy the fonts to the build folder',
+  { name: 'Copy debug bar assets to the public folder',
     module: 'copy',
     source: '/vendor/maximebf/debugbar/src/DebugBar/Resources',
-    target: '/public/build/debug-bar/' },
+    target: '/www/build/debug-bar/' },
 ```
 
 There is an additional flag you can add `dontRunOnRelease`, this will stop the module from running on a release.
 This is helpful for when you want to publish some client resource in dev only, eg a php debug bar.
 
 ```
-  { name: 'Copy the fonts to the build folder',
+  { name: 'Copy debug bar assets to the public folder',
     module: 'copy',
     dontRunOnRelease: true,
     source: '/vendor/maximebf/debugbar/src/DebugBar/Resources',
-    target: '/public/build/debug-bar/' },
+    target: '/www/build/debug-bar/' },
 ```
