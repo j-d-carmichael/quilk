@@ -25,7 +25,7 @@ This contains the global configuration applied to all developers using rsync.
     }
 ```
 
-Note: You may override the default options passed: "`--avz --delete`" with only those added to your own `set` directive by adding `useSetOnly`
+Note: You may override the default options passed: "`--avz --delete`" with only those added to your own `set` directive by adding `useSetOnly: true`
 
 **Developer block configuration**
 The module runner will not run the module unless the developer contains an rsync configuration part. Below we can see 3 developer blocks configured, the first is the default configuration, the 2nd & 3rd are specific for particular developers. John is configured to run an rsync based on the rsync block, where as Jan is not. In Jan's case the rsync module will simply not run (the rest of modules will run of course). A typical use case is Jan wishes to run a vagrant box for example.
