@@ -4,7 +4,7 @@
 
 
 ### Latest commit
-1. Better ignoring for the watcher for windows machines issues
+1. Better ignoring for the watcher for windows machines issues, now using regex for speed (thx to regexj)
 1. Rsync module directive, `useSetOnly: true` added. This does not use the default `'-avz --delete` and only uses the options in the `set` directive.
 1. Copy module directive `dontRunOnRelease: true` added the copy module allowing you to copy items in dev and not for release, eg a DeBug bar you only want on dev but not prod.
 1. Copy module now only runs if the file changed found in the watcher is in the source path.
