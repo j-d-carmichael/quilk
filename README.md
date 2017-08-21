@@ -4,12 +4,8 @@
 
 
 ### Latest commit
-1. Better ignoring for the watcher for windows machines issues, now using regex for speed (thx to regexj)
-1. Rsync module directive, `useSetOnly: true` added. This does not use the default `'-avz --delete` and only uses the options in the `set` directive.
-1. Copy module directive `dontRunOnRelease: true` added the copy module allowing you to copy items in dev and not for release, eg a DeBug bar you only want on dev but not prod.
-1. Copy module now only runs if the file changed found in the watcher is in the source path.
-1. The rsync module now checks for duplicate arguments before running.
-1. Warning with usage of quilk with node 8. Currently, node-sass cannot be installed globally & reliably with npm 5+. [See this issue]()https://github.com/sass/node-sass/issues/2045). You can try to install using the `--unsafe-perms`, if this works then great, but otherwise for now you will have to stick to the latest LTS (Long Term Support) release of node, or node 7.
+1. Rsync module now defaults permissions to `--chmod=u=rwx,g=rwx,o=r`
+1. Warning with usage of quilk with npm 5. Currently, node-sass cannot be installed globally & reliably with npm 5+. You can try to install using the `--unsafe-perms`, if this works then great, but otherwise for now you will have to stick to the latest LTS (Long Term Support) release of node, or node 7.
 
 #quilk
 Est. 4th Sept. 2016
