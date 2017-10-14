@@ -5,10 +5,10 @@
 
 ### Latest commit
 1. Rsync module now defaults permissions to `--chmod=u=rwx,g=rwx,o=r`
-1. Warning with usage of quilk with npm 5. Currently, node-sass cannot be installed globally & reliably with npm 5+. You can try to install using the `--unsafe-perms`, if this works then great, but otherwise for now you will have to stick to the latest LTS (Long Term Support) release of node, or node 7.
-
+1. Due to node-sass, to install quilk on npm 5+ requires changing the location of the global npm package location: https://docs.npmjs.com/getting-started/fixing-npm-permissions
+s
 #quilk
-Est. 4th Sept. 2016
+Est. 4th Sept. 2016`
 
 ---
 
