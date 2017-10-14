@@ -1,10 +1,10 @@
 {
   "name": "quilk",
-  "version": "2.1.12",
+  "version": "2.1.13",
   "engines": {
-    "node": ">=4.0.0 <8"
+    "node": ">=4.0.0"
   },
-  "description": "quilk is an easy to understand client side file builder from in-built CommonJS modules for es6, es5, SASS, LESS and a whole bunch more",
+  "description": "quilk, an easy to understand client side file builder from in-built CommonJS modules for es6, es5, SASS, LESS, rsync and a whole bunch more",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,7 +22,9 @@
     "rsync",
     "browserify",
     "compress",
-    "json"
+    "json",
+    "es5",
+    "es6"
   ],
   "license": "MIT",
   "repository": {
