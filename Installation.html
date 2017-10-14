@@ -70,7 +70,7 @@
     <div class="Page__header">
         <h1><a href="Installation.html">Installation</a></h1>
                 <span style="float: left; font-size: 10px; color: gray;">
-            Saturday, October 14, 2017 5:32 AM        </span>
+            Saturday, October 14, 2017 6:19 AM        </span>
                     </div>
 
 
@@ -79,9 +79,12 @@
 <p>Installing globally is the easiest way to use quilk:</p>
 <p><code>npm install -g quilk</code></p>
 <h5 id="page_NB-Installing-globally-on-npm-5">NB Installing globally on npm 5+:</h5>
-<p>Since the release of npm 5+ which is installed by default on node 8, the permissions have changed. As such node-sass (a dependency of quilk) cannot be installed globally without a little twaek.</p>
-<p>See: https://docs.npmjs.com/getting-started/fixing-npm-permissions</p>
-<p>It is slightly different on each OS but is successfully resolved on linux using option 2 from the above link.</p>
+<p>Since the release of npm 5+ which is installed by default on node 8, the permissions have changed. As such node-sass (a dependency of quilk) cannot be installed globally.</p>
+<p>There are two options to fix this issue:</p>
+<ol>
+<li>Use <a href="https://github.com/creationix/nvm" class="external">NVM</a>. This is by far the best option and recommended, NVM is generally a great tool for managing node versions on your machine and bypassing permission issues.</li>
+<li>or Change the location of where npm install global packages See: https://docs.npmjs.com/getting-started/fixing-npm-permissions Although this is advertised by npm, this is not totally reliable and you may run into similar permission issues.</li>
+</ol>
 <h2 id="page_Installing-non-globally">Installing non-globally</h2>
 <p>You can install quilk locally but you will then need to install it in every project.</p>
 <p><code>npm install --save quilk</code></p>
