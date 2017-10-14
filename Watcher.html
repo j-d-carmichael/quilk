@@ -24,25 +24,24 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
-<body class="">
-    
-<header class="Navbar hidden-print">
-    <a class="Navbar__brand" href="index.html">quilk</a>
+<body class=" ">
+    <div class="Columns content">
+    <aside class="Columns__left Collapsible">
+        <button type="button" class="Button Collapsible__trigger">
+            <span class="Collapsible__trigger--bar"></span>
+            <span class="Collapsible__trigger--bar"></span>
+            <span class="Collapsible__trigger--bar"></span>
+        </button>
+
+        <a class="Brand" href="index.html">quilk</a>
 
     <div class="Search">
-        <svg class="Search__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451"><path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z"/></svg>
-        <input type="search" id="tipue_search_input" class="Search__field" placeholder="Search..." autocomplete="on" results=25 autosave=text_search>
+        <svg class="Search__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451">
+            <path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z"/>
+        </svg>
+        <input type="search" id="tipue_search_input" class="Search__field" placeholder="Search..." autocomplete="on"
+               results=25 autosave=text_search>
     </div>
-</header>
-<div class="Columns content">
-    <aside class="Columns__left Collapsible">
-        <div class="Collapsible__container">
-            <button type="button" class="Button Collapsible__trigger">
-                <span class="Collapsible__trigger--bar"></span>
-                <span class="Collapsible__trigger--bar"></span>
-                <span class="Collapsible__trigger--bar"></span>
-            </button>
-        </div>
 
         <div class="Collapsible__content">
             <!-- Navigation -->
@@ -71,15 +70,15 @@
     <div class="Page__header">
         <h1><a href="Watcher.html">Watcher</a></h1>
                 <span style="float: left; font-size: 10px; color: gray;">
-            Thursday, July 20, 2017 12:54 PM        </span>
+            Saturday, October 14, 2017 5:04 AM        </span>
                     </div>
 
 
     <div class="s-content">
-        <h3 id="page_Dont_Watch">Dont Watch</h3>
+        <h3 id="page_Dont-Watch">Dont Watch</h3>
 <p>When using the watch option ensure that you instruct which file to not watch, <code>dont_watch</code>.</p>
 <p>The <code>dont_watch</code> option is quilk.json is passed to chokidar as directories and exact files to not trigger on. EG should you build a css file from sass you don't want to trigger chokidar to run all the modules again when it spots a change in the said css file ie ending up in an infinite loop.</p>
-<h3 id="page_Chokidar_Controls">Chokidar Controls</h3>
+<h3 id="page_Chokidar-Controls">Chokidar Controls</h3>
 <p>The watcher is essentially an abstraction to <a href="https://www.npmjs.com/package/chokidar" class="external">Chokidar</a>, as with most other built in modules in quilk you are able to pass in native options to control the watcher.</p>
 <p>Add this block to your quilk file, see <a href="https://www.npmjs.com/package/chokidar" class="external">Chokidar</a> for all options available:</p>
 <pre><code>chokidar_options: {
@@ -88,7 +87,7 @@
     depth: 120
 }
 </code></pre>
-<h3 id="page_Race_conditions_with_other_watchers">Race conditions with other watchers</h3>
+<h3 id="page_Race-conditions-with-other-watchers">Race conditions with other watchers</h3>
 <p>You can at times hit races conditions with other watchers, for example using Laravel's Mix with quilk's rsync. To help reduces the multi trigger of the quilk modules there is a default wait time of 500 ms between triggers.</p>
 <p>This default time can be changed with the <code>watcher_wait_between_changes</code> directive in your quilk file to any integer of milli-seconds:</p>
 <pre><code>chokidar_options: 100
