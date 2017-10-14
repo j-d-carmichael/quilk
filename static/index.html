@@ -24,14 +24,19 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
-<body class="">
-    <div class="Navbar hidden-print">
+<body class=" homepage">
+    
+
+<div class="Navbar hidden-print">
     <div class="container">
-        <a class="Navbar__brand" href="index.html">quilk</a>
+        <a class="Brand" href="index.html">quilk</a>
 
     <div class="Search">
-        <svg class="Search__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451"><path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z"/></svg>
-        <input type="search" id="tipue_search_input" class="Search__field" placeholder="Search..." autocomplete="on" results=25 autosave=text_search>
+        <svg class="Search__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451">
+            <path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z"/>
+        </svg>
+        <input type="search" id="tipue_search_input" class="Search__field" placeholder="Search..." autocomplete="on"
+               results=25 autosave=text_search>
     </div>
     </div>
 </div>
@@ -60,7 +65,17 @@
 <hr />
 <h2 id="page_Intro">Intro</h2>
 <p>This package is designed to make building client side code easy whilst keeping the build file standardised.</p>
-<p>At the heart is a &quot;runner&quot; to run each module a projects build file uses. These modules can be the built in modules, public npm modules or your own project specific modules... as long as they have a run function you're good to go.</p>
+<p>A standardised build file results in less time writing the build file and more time building the app which is in everyone's book a better use of time.</p>
+<p>Use quilk to build:</p>
+<ul>
+<li>CSS files from SCSS or LESS files or multiple CSS files.</li>
+<li>JS app and vendor files from es5/es6 js files.</li>
+<li>Copy assets from dev to production folders.</li>
+<li>Watch dev environments to automatically rebuild.</li>
+<li>Sync single file changes to a development server with rsync to improve communication between teams.</li>
+<li>Pack and minify code for production.</li>
+</ul>
+<p>Installing: https://jdcrecur.github.io/quilk/Installation.html</p>
 <hr />
 <p>(these docs have been generated from markdown and presented automatically by daux)</p>
             </div>

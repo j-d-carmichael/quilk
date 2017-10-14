@@ -24,25 +24,24 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
-<body class="">
-    
-<header class="Navbar hidden-print">
-    <a class="Navbar__brand" href="index.html">quilk</a>
+<body class=" ">
+    <div class="Columns content">
+    <aside class="Columns__left Collapsible">
+        <button type="button" class="Button Collapsible__trigger">
+            <span class="Collapsible__trigger--bar"></span>
+            <span class="Collapsible__trigger--bar"></span>
+            <span class="Collapsible__trigger--bar"></span>
+        </button>
+
+        <a class="Brand" href="index.html">quilk</a>
 
     <div class="Search">
-        <svg class="Search__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451"><path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z"/></svg>
-        <input type="search" id="tipue_search_input" class="Search__field" placeholder="Search..." autocomplete="on" results=25 autosave=text_search>
+        <svg class="Search__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451">
+            <path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z"/>
+        </svg>
+        <input type="search" id="tipue_search_input" class="Search__field" placeholder="Search..." autocomplete="on"
+               results=25 autosave=text_search>
     </div>
-</header>
-<div class="Columns content">
-    <aside class="Columns__left Collapsible">
-        <div class="Collapsible__container">
-            <button type="button" class="Button Collapsible__trigger">
-                <span class="Collapsible__trigger--bar"></span>
-                <span class="Collapsible__trigger--bar"></span>
-                <span class="Collapsible__trigger--bar"></span>
-            </button>
-        </div>
 
         <div class="Collapsible__content">
             <!-- Navigation -->
@@ -71,13 +70,23 @@
     <div class="Page__header">
         <h1><a href="Installation.html">Installation</a></h1>
                 <span style="float: left; font-size: 10px; color: gray;">
-            Thursday, July 20, 2017 12:54 PM        </span>
+            Saturday, October 14, 2017 5:32 AM        </span>
                     </div>
 
 
     <div class="s-content">
-        <p>Quilk is not installed as a dependency in a package.json file, but installed globally</p>
+        <h2 id="page_Installing-globally">Installing globally</h2>
+<p>Installing globally is the easiest way to use quilk:</p>
 <p><code>npm install -g quilk</code></p>
+<h5 id="page_NB-Installing-globally-on-npm-5">NB Installing globally on npm 5+:</h5>
+<p>Since the release of npm 5+ which is installed by default on node 8, the permissions have changed. As such node-sass (a dependency of quilk) cannot be installed globally without a little twaek.</p>
+<p>See: https://docs.npmjs.com/getting-started/fixing-npm-permissions</p>
+<p>It is slightly different on each OS but is successfully resolved on linux using option 2 from the above link.</p>
+<h2 id="page_Installing-non-globally">Installing non-globally</h2>
+<p>You can install quilk locally but you will then need to install it in every project.</p>
+<p><code>npm install --save quilk</code></p>
+<p>To run quilk from a project:</p>
+<p><code>node node_modules/quilk/bin/quilk.js d=john watch</code></p>
     </div>
 
         <nav>

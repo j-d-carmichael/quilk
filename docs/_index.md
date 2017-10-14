@@ -9,7 +9,18 @@
 ## Intro
 This package is designed to make building client side code easy whilst keeping the build file standardised. 
 
-At the heart is a "runner" to run each module a projects build file uses. These modules can be the built in modules, public npm modules or your own project specific modules... as long as they have a run function you're good to go.
+A standardised build file results in less time writing the build file and more time building the app which is in everyone's book a better use of time.
+
+Use quilk to build:
+- CSS files from SCSS or LESS files or multiple CSS files.
+- JS app and vendor files from es5/es6 js files.
+- Copy assets from dev to production folders.
+- Watch dev environments to automatically rebuild.
+- Sync single file changes to a development server with rsync to improve communication between teams.
+- Pack and minify code for production.
+
+Installing: https://jdcrecur.github.io/quilk/Installation.html
 
 ___
+
 (these docs have been generated from markdown and presented automatically by daux)
