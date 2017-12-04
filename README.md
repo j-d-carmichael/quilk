@@ -2,16 +2,13 @@
 
 [![NPM](https://nodei.co/npm/quilk.png?downloads=true&downloadRank=true)](https://nodei.co/npm/quilk/)
 
+Est. 4th Sept. 2016`
 
 ### Latest commit
 1. Rsync module now defaults permissions to `--chmod=u=rwx,g=rwx,o=r`
-1. Warning with usage of quilk with npm 5. Currently, node-sass cannot be installed globally & reliably with npm 5+. You can try to install using the `--unsafe-perms`, if this works then great, but otherwise for now you will have to stick to the latest LTS (Long Term Support) release of node, or node 7.
+1. Readme for bypassing node-sass global install permission issues: https://jdcrecur.github.io/quilk/Installation.html
 
-#quilk
-Est. 4th Sept. 2016
-
----
-
+### What is it
 In brief (see the example quilk file before), quilk is a lightweight standardised module runner. Pre-baked modules in quilk can do the following:
 
 * **Rsync** files locally to a development server, ideal for ensuring each dev has the same environment and doesn't need to spend time managing a virtual box or its CPU overheads.
