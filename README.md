@@ -2,24 +2,28 @@
 
 [![NPM](https://nodei.co/npm/quilk.png?downloads=true&downloadRank=true)](https://nodei.co/npm/quilk/)
 
-Est. 4th Sept. 2016`
+#quilk
+Est. 4th Sept. 2016
 
-### Latest commit
-1. Rsync module now defaults permissions to `--chmod=u=rwx,g=rwx,o=r`
-1. Readme for bypassing node-sass global install permission issues: https://jdcrecur.github.io/quilk/Installation.html
+---
 
-### What is it
+## Installing
+```
+npm install quilk --save-dev
+```
+
+## What is does
 In brief (see the example quilk file before), quilk is a lightweight standardised module runner. Pre-baked modules in quilk can do the following:
 
 * **Rsync** files locally to a development server, ideal for ensuring each dev has the same environment and doesn't need to spend time managing a virtual box or its CPU overheads.
-* Compile [**SASS**](https://www.npmjs.com/package/node-sass) with node-sass, either by **finding scss** files or by giving it simple entry point.
-* Compile [**LESS**](https://www.npmjs.com/package/less) (no find module has been written for LESS files yet).
-* Generate a single CSS file from a **fixed list of CSS** files.
 * Compile JS code with [**Babelify**](https://www.npmjs.com/package/babelify) either in one big file or broken into vendor.js and app.js with the babelify_app and babelify_vendor module.
 * [**Browserify**](https://www.npmjs.com/package/browserify) your backend modules to share with the front end.
 * [**Concat**](https://www.npmjs.com/package/concat) big client side js from a fixed list or instruct quilk to **find** js files in a folder with concat or node-minify
 * **Obfusicate, minify** javascript or css using the [**node-minify**](https://www.npmjs.com/package/node-minify) module check out their docs for more on node-minify.
 * **Strip out** comments from js code.
+* Compile [**SASS**](https://www.npmjs.com/package/node-sass) with node-sass, either by **finding scss** files or by giving it simple entry point.
+* Compile [**LESS**](https://www.npmjs.com/package/less) (no find module has been written for LESS files yet).
+* Generate a single CSS file from a **fixed list of CSS** files.
 * Configure **independent** blocks for developers.
 * [**Desktop notifications**](https://www.npmjs.com/package/node-notifier) on or off or on for varying levels.
 * Ping messages via [**email**](https://www.npmjs.com/package/nodemailer) when a built has finished, with success or not.
@@ -35,22 +39,36 @@ Most of the standard jobs can be covered with a single quilk file and the baked 
 
 ---
 
-*If anyone fancies helping [evolve](https://github.com/jdcrecur/quilk/) quilk give me a shout, many [skilled] hands make light work.*
+## Setting up with your project
 
-## Running a quilk file
-`quilk` 
+1 - Add to your projects package.json file a new script:
+```
+  ...
+  "scripts": {
+    ...
+    "quilk": "node node_modules/quilk/bin/quilk.js"
+    ...
+  },
+  ...
+```
 
-or 
+2 - Add your quilk.js(on) file
 
-`quilk watch` 
+Either run `npm run quilk init` or build your own (see the example below).
 
-or 
+3 - Run your quilk build file with any of the following options
+```
+npm run quilk
+npm run quilk developer=john
+npm run quilk d=john
+npm run quilk d=john watch
+```
 
-`quilk watch d=john` 
+4 - You can also limit which modules from your quilk file are run:
 
-or to just run a select group of modules from a quilk file 
-
-`quilk watch d=john module=sass_std module=rsync`
+```
+npm run quilk d=john watch module=sass_std module=rsync
+```
 
 ### Example quilk.js file (a quilk.json file is also valid)
 ```
@@ -178,7 +196,8 @@ module.exports = {
 
 ### Tips
 
-1. All use of babelify or the babili compressor within the node-minify module require you to install your presets locally.
 1. Most in-built modules will pass in the options from the quilk file directly to the npm package they are an abstraction for, so for full options please check the individual npm packages.
 1. Take control of the chokidar watcher options for all developers, or developer by developer... each to their own.
 1. Got more than 1 watcher on the go, check out the `watcher_wait_between_changes` flag if you're getting collisions.
+1. Don't forget to add your own `.babelrc` file when using any of `babel` modules
+1. The `watch` flag will rebuild even when it sees a new built file, to prevent this you can tell the watch to not watch specific paths (this is added a regex pattern internally to chokidar)
