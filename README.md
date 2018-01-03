@@ -70,6 +70,42 @@ npm run quilk d=john watch
 npm run quilk d=john watch module=sass_std module=rsync
 ```
 
+### Babelify your javascript apps
+
+You can easily use quilk to build es* javascript apps, under the hood it all maps to babelify. Following the latest recommendations of babelify it is now advised to use babel-preset-env npm package as your preset.
+
+As there are many many presets available, there are no presets built into the quilk core modules just as babelify do not bundle any into their core. Here is an all-round quick start that will get you moving with quilk:
+
+1 - `npm install babel-preset-env --save-dev`
+
+2 - Add a `.babelrc` file to the root of your project with the following:
+```
+{
+  "presets": ["babel-preset-env"]
+}
+```
+
+3 - Add the following quilk module to your quilk.js(on) file:
+```
+  modules: [
+    {
+      name       : 'JS babel app',
+      module     : 'babelify',
+      configure  : {
+        babelrc: '.babelrc'
+      },
+      extensions : ['.js'],
+      debug      : true,
+      entries    : '/src/app.js',
+      target     : '/build/js/app.js'
+    }
+  ],
+```
+
+That's it. The above module will use the babel preset and .babelrc file to correctly output a browser readable js file at `/build/js/app.js`. The output above will include all the js required, this might not be ideal in bigger apps, see the babelify app and vendor modules to break up the code base.
+
+NB: For the keen eyes amongst you, babel-preset-env page advises using https://github.com/babel/babel/tree/master/packages/babel-preset-env however please note that the latest release of babelify 8 does only include Babel 6 which does not support this new preset.
+
 ### Example quilk.js file (a quilk.json file is also valid)
 ```
 module.exports = {
@@ -196,8 +232,16 @@ module.exports = {
 
 ### Tips
 
-1. Most in-built modules will pass in the options from the quilk file directly to the npm package they are an abstraction for, so for full options please check the individual npm packages.
-1. Take control of the chokidar watcher options for all developers, or developer by developer... each to their own.
+1. The leading slash for everything is not relavent, add or not, quilk will only ever work within the current directory of the quilk file or a child directory. This is for security to prevent careless mistakes and potential loss of work.
+1. The rsync module... be sure to add the trailing slash else you will end up with a directory in a directory. And ALWAYS double check your paths!
+1. Most in-built modules will pass in the options from the quilk file directly to the npm package they are an abstraction for, so for full options please check the individual npm packages, eg chokidar
 1. Got more than 1 watcher on the go, check out the `watcher_wait_between_changes` flag if you're getting collisions.
-1. Don't forget to add your own `.babelrc` file when using any of `babel` modules
+1. Don't forget to add your own `.babelrc` file when using any of `babel` modules as mentioned above
 1. The `watch` flag will rebuild even when it sees a new built file, to prevent this you can tell the watch to not watch specific paths (this is added a regex pattern internally to chokidar)
+
+
+### Latest change(s)
+
+1. Removed the module help commands in favour of the online docs.
+2. Updated the dependencies
+3. Leading slashes, use them or not. All paths will now always be relative to the directory of the quilk file called.
