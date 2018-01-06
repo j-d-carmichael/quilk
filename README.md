@@ -12,27 +12,7 @@ Est. 4th Sept. 2016
 npm install quilk --save-dev
 ```
 
-## What is does
-In brief (see the example quilk file before), quilk is a lightweight standardised module runner. Pre-baked modules in quilk can do the following:
-
-* **Rsync** files locally to a development server, ideal for ensuring each dev has the same environment and doesn't need to spend time managing a virtual box or its CPU overheads.
-* Compile JS code with [**Babelify**](https://www.npmjs.com/package/babelify) either in one big file or broken into vendor.js and app.js with the babelify_app and babelify_vendor module.
-* [**Browserify**](https://www.npmjs.com/package/browserify) your backend modules to share with the front end.
-* [**Concat**](https://www.npmjs.com/package/concat) big client side js from a fixed list or instruct quilk to **find** js files in a folder with concat or node-minify
-* **Obfusicate, minify** javascript or css using the [**node-minify**](https://www.npmjs.com/package/node-minify) module check out their docs for more on node-minify.
-* **Strip out** comments from js code.
-* Compile [**SASS**](https://www.npmjs.com/package/node-sass) with node-sass, either by **finding scss** files or by giving it simple entry point.
-* Compile [**LESS**](https://www.npmjs.com/package/less) (no find module has been written for LESS files yet).
-* Generate a single CSS file from a **fixed list of CSS** files.
-* Configure **independent** blocks for developers.
-* [**Desktop notifications**](https://www.npmjs.com/package/node-notifier) on or off or on for varying levels.
-* Ping messages via [**email**](https://www.npmjs.com/package/nodemailer) when a built has finished, with success or not.
-* Ping messages via **webhooks** via the [request](https://www.npmjs.com/package/request) npm when a build was successful or a giant failure, eg into a slack channel.
-* **Watch** a local fileset with the watch flag ([**chokidar**](https://www.npmjs.com/package/chokidar). Control how the watcher behaves by passing in the chokidar_options from the quilk file globally or even developer by developer.
-
-Most of the standard jobs can be covered with a single quilk file and the baked in modules into quilk, however there is of course the ability to write your own modules for quilk, either publicy hosted of privately nested in your project repo.
-
----
+NB: There are issues installing node-sass, thus quilk, globally on *nix systems related to permissions with npm v5+.
 
 ## Documentation here 
 [https://jdcrecur.github.io/quilk/](https://jdcrecur.github.io/quilk/)
@@ -69,6 +49,28 @@ npm run quilk d=john watch
 ```
 npm run quilk d=john watch module=sass_std module=rsync
 ```
+
+### What is does
+In brief (see the example quilk file before), quilk is a lightweight standardised module runner. Pre-baked modules in quilk can do the following:
+
+* **Rsync** files locally to a development server, ideal for ensuring each dev has the same environment and doesn't need to spend time managing a virtual box or its CPU overheads.
+* Compile JS code with [**Babelify**](https://www.npmjs.com/package/babelify) either in one big file or broken into vendor.js and app.js with the babelify_app and babelify_vendor module.
+* [**Browserify**](https://www.npmjs.com/package/browserify) your backend modules to share with the front end.
+* [**Concat**](https://www.npmjs.com/package/concat) big client side js from a fixed list or instruct quilk to **find** js files in a folder with concat or node-minify
+* **Obfusicate, minify** javascript or css using the [**node-minify**](https://www.npmjs.com/package/node-minify) module check out their docs for more on node-minify.
+* **Strip out** comments from js code.
+* Compile [**SASS**](https://www.npmjs.com/package/node-sass) with node-sass, either by **finding scss** files or by giving it simple entry point.
+* Compile [**LESS**](https://www.npmjs.com/package/less) (no find module has been written for LESS files yet).
+* Generate a single CSS file from a **fixed list of CSS** files.
+* Configure **independent** blocks for developers.
+* [**Desktop notifications**](https://www.npmjs.com/package/node-notifier) on or off or on for varying levels.
+* Ping messages via [**email**](https://www.npmjs.com/package/nodemailer) when a built has finished, with success or not.
+* Ping messages via **webhooks** via the [request](https://www.npmjs.com/package/request) npm when a build was successful or a giant failure, eg into a slack channel.
+* **Watch** a local fileset with the watch flag ([**chokidar**](https://www.npmjs.com/package/chokidar). Control how the watcher behaves by passing in the chokidar_options from the quilk file globally or even developer by developer.
+
+Most of the standard jobs can be covered with a single quilk file and the baked in modules into quilk, however there is of course the ability to write your own modules for quilk, either publicy hosted of privately nested in your project repo.
+
+---
 
 ### Babelify your javascript apps
 
