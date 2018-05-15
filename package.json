@@ -36,7 +36,9 @@
     "url": "https://github.com/jdcrecur/quilk/issues"
   },
   "main": "lib/quilk.js",
-  "bin": "./bin/quilk.js",
+  "bin": {
+    "quilk": "./bin/quilk.js"
+  },
   "files": [
     "bin",
     "lib"
