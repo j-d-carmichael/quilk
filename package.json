@@ -57,7 +57,7 @@
     "javascript-natural-sort": "0.7.1",
     "jdc-node-cliarg-reader": "1.1.2",
     "jsonfile": "^4.0.0",
-    "less": "^3.7.1",
+    "less": "^2.7.3",
     "lodash": "^4.17.4",
     "lodash-deep": "2.0.0",
     "node-minify": "^3.1.0",
