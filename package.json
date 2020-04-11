@@ -1,6 +1,6 @@
 {
   "name": "quilk",
-  "version": "2.4.5",
+  "version": "2.4.6",
   "description": "quilk, an easy to understand client side file builder from in-built CommonJS modules for es6, es5, SASS, LESS, rsync and a whole bunch more",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
