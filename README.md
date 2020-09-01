@@ -3,7 +3,7 @@
 [![NPM](https://nodei.co/npm/quilk.png?downloads=true&downloadRank=true)](https://nodei.co/npm/quilk/)
 
 ## Documentation here 
-[https://jdcrecur.github.io/quilk/](https://jdcrecur.github.io/quilk/)
+[https://johndcarmichael.github.io/quilk/](https://johndcarmichael.github.io/quilk/)
 
 ---
 
