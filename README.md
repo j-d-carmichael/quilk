@@ -95,6 +95,9 @@ module.exports = {
   developers: {
     default: {
       platform: 'linux',
+      notifier: {
+        on: false
+      },
       rsync: {
         localPath: './',
         remote: 'www-data@myserver',
