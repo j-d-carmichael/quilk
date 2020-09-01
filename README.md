@@ -1,6 +1,20 @@
 ![](https://img.shields.io/npm/v/quilk.svg) ![](https://img.shields.io/npm/dt/quilk.svg)
-
 [![NPM](https://nodei.co/npm/quilk.png?downloads=true&downloadRank=true)](https://nodei.co/npm/quilk/)
+
+# Quilk
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Documentation here](#documentation-here)
+- [Setup](#setup)
+  - [What is does](#what-is-does)
+  - [Common rsync setup](#common-rsync-setup)
+  - [Kitchen'esk sink exmaple config file:](#kitchenesk-sink-exmaple-config-file)
+  - [Tips](#tips)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Documentation here 
 [https://johndcarmichael.github.io/quilk/](https://johndcarmichael.github.io/quilk/)
