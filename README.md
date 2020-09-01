@@ -47,6 +47,50 @@ Watch a file base and trigger modules on file changes via chokidar, modules incl
 - webhook
 ---
 
+### Common rsync setup
+`quilk.js` will simply sync files from your project to a server. Adding the watch flag will sync the changes files.
+
+```javascript
+module.exports = {
+  // The modules this quilk file should run
+  modules: [
+    {
+      name: 'Rsync it',
+      module: 'rsync',
+      ignore: {
+        windows: [],
+        mac: [],
+        linux: [],
+        global: [
+          '.env',
+          '.git/*',
+          'node_modules'
+        ]
+      }
+    }
+  ],
+
+  // Watcher don't run the modules when files change here...
+  dont_watch: [
+    '.git/',
+    'node_modules',
+    'vendor',
+  ],
+  
+  // The developers own custom settings
+  developers: {
+    default: {
+      platform: 'linux',
+      rsync: {
+        localPath: './',
+        remote: 'www-data@myserver',
+        serverPath: '/var/www/project-x/'
+      }
+    },
+  }
+}
+```
+
 ### Kitchen'esk sink exmaple config file:
 `quilk.js`:
 ```javascript
@@ -162,7 +206,7 @@ module.exports = {
         atomic: 50
       },
       rsync: {
-        localPath: '/cygdrive/c/code//project-x/',
+        localPath: './',
         remote: 'www-data@myserver',
         serverPath: '/var/www/vhosts/project-x/'
       }
