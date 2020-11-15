@@ -90,6 +90,10 @@ module.exports = {
     'node_modules',
     'vendor',
   ],
+  // Tell the watcher which project relatives to watch, if not set defaults to the project base
+  watch_only: [
+    '/src',
+  ],
   
   // The developers own custom settings
   developers: {
