@@ -1,6 +1,6 @@
 {
   "name": "quilk",
-  "version": "2.7.3",
+  "version": "2.7.4",
   "description": "quilk, an easy to understand client side file builder from in-built CommonJS modules for es6, es5, SASS, LESS, rsync and a whole bunch more",
   "scripts": {
     "build:toc": "npx doctoc ./",
