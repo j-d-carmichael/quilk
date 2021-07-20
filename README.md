@@ -94,7 +94,13 @@ module.exports = {
   watch_only: [
     '/src',
   ],
-  
+
+  // Injections chokidar_options to chokidar
+  chokidar_options: {
+    atomic: 50,
+    depth: 120
+  },
+
   // The developers own custom settings
   developers: {
     default: {
