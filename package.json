@@ -57,7 +57,7 @@
     "lodash-deep": "^2.0.0",
     "node-minify": "^2.4.2",
     "node-notifier": "^9.0.1",
-    "node-sass": "^6.0.1",
+    "node-sass": "^7.0.0",
     "nodemailer": "^6.6.3",
     "nodemailer-sendmail-transport": "^1.0.2",
     "npm-tool-version-check": "^1.1.3",
