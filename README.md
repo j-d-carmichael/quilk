@@ -109,6 +109,9 @@ module.exports = {
         on: false
       },
       rsync: {
+        // The settings below would result in a command:       
+        // rsync -avz --delete -e 'ssh -J john@myjump:666' ./ www-data@myserver:/var/www/project-x/
+        e: 'ssh -J john@myjump:666',
         localPath: './',
         remote: 'www-data@myserver',
         serverPath: '/var/www/project-x/'
