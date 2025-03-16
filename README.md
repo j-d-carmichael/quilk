@@ -1,3 +1,7 @@
+> ⚠️ **Warning:** This project is no longer actively developed.  
+> While it is still used in some legacy systems, only security updates are maintained.
+
+
 ![](https://img.shields.io/npm/v/quilk.svg) ![](https://img.shields.io/npm/dt/quilk.svg)
 [![NPM](https://nodei.co/npm/quilk.png?downloads=true&downloadRank=true)](https://nodei.co/npm/quilk/)
 
