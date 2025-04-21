@@ -1,4 +1,4 @@
-> ⚠️ **Warning:** This project is no longer actively developed.  
+> ⚠️ **Warning:** This project is no longer actively developed; archived 5 years ago.
 > While it is still used in some legacy systems, only security updates are maintained.
 > It was created a long time ago as simple alt to gulp, more opinionated 
 
